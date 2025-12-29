@@ -4,6 +4,6 @@ import { SafeAreaView } from "react-native-safe-area-context"
 
 export const Taximeter = () => {
     return <SafeAreaView>
-      <Text>Teste2</Text>
+      <Text className="bg-red-500">Teste2</Text>
 </SafeAreaView>
 }

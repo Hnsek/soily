@@ -13,7 +13,7 @@ import {
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
 import Router from './Router';
-
+import "../global.css"
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
