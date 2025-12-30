@@ -1,9 +1,10 @@
 import { Text } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
+import Map from "../../components/Map"
 
 
 export const Taximeter = () => {
     return <SafeAreaView>
-      <Text className="bg-red-500">Teste2</Text>
+      <Map></Map>
 </SafeAreaView>
 }

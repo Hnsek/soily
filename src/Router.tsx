@@ -6,7 +6,7 @@ const Stack = createNativeStackNavigator()
 
 export default () => {
     return <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator screenOptions={{headerShown:false}}>
             <Stack.Screen name='taximeter' component={Taximeter}></Stack.Screen>
         </Stack.Navigator>
     </NavigationContainer>
