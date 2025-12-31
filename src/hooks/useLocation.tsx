@@ -1,14 +1,7 @@
 import { useEffect, useState } from "react"
 import Geolocation, { GeolocationResponse } from "@react-native-community/geolocation";
+import { Location } from "../types/location";
 
-type Location = {
-  latitude: number;
-  longitude: number;
-  altitude: number;
-  speed: number;
-  accuracy: number;
-  heading: number;
-}
 
 type UseLocationResult = {
   location: Location | undefined
