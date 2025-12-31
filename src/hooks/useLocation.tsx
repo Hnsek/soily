@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import Geolocation, { GeolocationResponse } from "@react-native-community/geolocation";
-import { Location } from "../types/location";
+import { Location, Position } from "../types/location";
+import { getCurrentPosition, watchPosition } from "../services/location";
 
 
 type UseLocationResult = {
@@ -8,33 +9,25 @@ type UseLocationResult = {
 }
 
 const convertPositionToLocation = (position : GeolocationResponse) : Location => {
-  
-  return {
-    heading: position.coords.heading || 0,
-    longitude: position.coords.longitude,
-    latitude: position.coords.latitude,
-    speed: position.coords.speed || 0,
-    accuracy: position.coords.accuracy,
-    altitude: position.coords.altitude || 0
-  }
-
+  return position.coords
 }
 
-export default () : UseLocationResult => {
+export default (initialPosition?: Position) : UseLocationResult => {
     const [location, setLocation] = useState<Location>();
 
     useEffect(() => {
       
-      Geolocation.getCurrentPosition((position) => {
-        const location = convertPositionToLocation(position)
-        setLocation(location)
-      })
+      if(initialPosition){
+        setLocation(initialPosition.location)
+      }
+      else{
+        getCurrentPosition()
+          .then((position) => setLocation(position.location))
+      }
 
-      const watchPositionId = Geolocation.watchPosition((position) => {
-        const location = convertPositionToLocation(position) 
-        setLocation(location)
-      }) 
-      
+      const watchPositionId = watchPosition((position) => setLocation(position.location))
+
+
       return () => {
         Geolocation.clearWatch(watchPositionId)
       }
