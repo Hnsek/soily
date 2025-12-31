@@ -6,3 +6,8 @@ export type Location = {
   accuracy: number;
   heading: number;
 }
+
+export type Position = {
+  location: Location,
+  timestamp: number
+}
