@@ -8,10 +8,6 @@ type UseLocationResult = {
   location: Location | undefined
 }
 
-const convertPositionToLocation = (position : GeolocationResponse) : Location => {
-  return position.coords
-}
-
 export default (initialPosition?: Position) : UseLocationResult => {
     const [location, setLocation] = useState<Location>();
 
