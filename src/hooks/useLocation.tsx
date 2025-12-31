@@ -8,13 +8,13 @@ type UseLocationResult = {
   location: Location | undefined
 }
 
-export default (initialPosition?: Position) : UseLocationResult => {
+export default (initialLocation?: Location) : UseLocationResult => {
     const [location, setLocation] = useState<Location>();
 
     useEffect(() => {
       
-      if(initialPosition){
-        setLocation(initialPosition.location)
+      if(initialLocation){
+        setLocation(initialLocation)
       }
       else{
         getCurrentPosition()
