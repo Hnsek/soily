@@ -18,7 +18,11 @@ export const getCurrentPosition = () : Promise<Position> => {
 }
 
 export const watchPosition = (success: (position: Position) => void) => {
-  Geolocation.watchPosition(
+  return Geolocation.watchPosition(
     (position) => success(format(position)),
   )
+}
+
+export const clearWatch = (watchId : number) => {
+  return Geolocation.clearWatch(watchId)
 }
