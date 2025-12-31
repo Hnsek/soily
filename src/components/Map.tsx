@@ -8,9 +8,10 @@ type Props = {
     children?: ReactNode
 }
 
-export default ({className, children} : Props) : ReactNode  => {
+export const Map = ({className, children} : Props) : ReactNode  => {
   return <View className={twMerge(className, "w-full h-full")}>
     <MapView
+      
       mapStyle="https://tiles.openfreemap.org/styles/liberty"
       style={[{height:"100%", width:"100%"}]}
       >
