@@ -1,5 +1,5 @@
-import { MapView, Camera, CameraRef } from "@maplibre/maplibre-react-native"
-import { ReactNode, Ref } from "react";
+import { MapView, Camera, CameraRef, MarkerView } from "@maplibre/maplibre-react-native"
+import { ReactElement, ReactNode, Ref } from "react";
 import { View } from "react-native";
 import { twMerge } from "tailwind-merge";
 
@@ -16,8 +16,6 @@ export const Map = ({className, children} : MapProps) : ReactNode  => {
       style={[{height:"100%", width:"100%"}]}
       >
       {children}
-  {/* <Camera zoomLevel={17} centerCoordinate={[-36.6477609, -9.7461033]}/> 
-     */}
   </MapView>
   </View>
 
@@ -31,4 +29,15 @@ type MapCameraProps = {
 
 export const MapCamera = ({ref,zoomLevel, centerCoordinate} : MapCameraProps) : ReactNode => {
   return <Camera ref={ref} zoomLevel={zoomLevel} centerCoordinate={centerCoordinate}/>
+}
+
+type MapMarkerProps = {
+  children: ReactElement,
+  coordinate: GeoJSON.Position
+}
+
+export const MapMarker = ({children, coordinate} : MapMarkerProps) => {
+  return <MarkerView coordinate={coordinate}>
+    {children}  
+  </MarkerView>
 }
