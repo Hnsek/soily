@@ -1,8 +1,9 @@
 import { ComponentProps } from "react";
 import { TextInput as TextInputRoot } from "react-native"
+import { twMerge } from "tailwind-merge";
 
 type TextInputProps = ComponentProps<typeof TextInputRoot>
 
-export const TextInput = ({ children, ...props } : TextInputProps) => {
-  return <TextInput {...props}>{children}</TextInput> 
+export const TextInput = ({ children, className, ...props } : TextInputProps) => {
+  return <TextInputRoot className={twMerge("h-16 w-full border rounded-md", className)} {...props}>{children}</TextInputRoot> 
 }
