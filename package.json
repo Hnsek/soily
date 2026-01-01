@@ -19,6 +19,7 @@
     "lucide-react-native": "^0.562.0",
     "nativewind": "^4.2.1",
     "react": "19.2.0",
+    "react-hook-form": "^7.69.0",
     "react-native": "0.83.1",
     "react-native-gesture-handler": "^2.30.0",
     "react-native-picker-select": "^9.3.1",
