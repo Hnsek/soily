@@ -53,8 +53,8 @@ export const AnimatedMapMarker = ({ children, coordinate } : AnimatedMapMarkerPr
   const latitude = useSharedValue(coordinate[1])
 
   useEffect(() => {
-    longitude.value = withTiming(coordinate[0], { duration: 500 })
-    latitude.value = withTiming(coordinate[1], { duration: 500 })
+    longitude.value = withTiming(coordinate[0], { duration: 2000 })
+    latitude.value = withTiming(coordinate[1], { duration: 2000 })
   }, [coordinate])
 
   return <MapMarker coordinate={coordinate}>{ children }</MapMarker>
