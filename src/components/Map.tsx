@@ -1,7 +1,8 @@
 import { MapView, Camera, CameraRef, MarkerView } from "@maplibre/maplibre-react-native"
-import { ReactElement, ReactNode, Ref, useEffect } from "react";
+import { ReactElement, ReactNode, Ref, useEffect, useState } from "react";
 import { View } from "react-native";
-import { useSharedValue, withTiming } from "react-native-reanimated";
+import { useAnimatedReaction, useSharedValue, withTiming } from "react-native-reanimated";
+import { runOnJS } from "react-native-worklets";
 import { twMerge } from "tailwind-merge";
 
 type MapProps = {
@@ -49,6 +50,8 @@ type AnimatedMapMarkerProps = {
 }
 
 export const AnimatedMapMarker = ({ children, coordinate } : AnimatedMapMarkerProps) => {
+  const [markerCoordinate, setMarkerCoordinate] = useState(coordinate)
+
   const longitude = useSharedValue(coordinate[0])
   const latitude = useSharedValue(coordinate[1])
 
@@ -57,5 +60,10 @@ export const AnimatedMapMarker = ({ children, coordinate } : AnimatedMapMarkerPr
     latitude.value = withTiming(coordinate[1], { duration: 2000 })
   }, [coordinate])
 
-  return <MapMarker coordinate={coordinate}>{ children }</MapMarker>
+  useAnimatedReaction(
+    ()=> [longitude.value, latitude.value],
+    (coordinate) => runOnJS(setMarkerCoordinate)(coordinate)
+  )
+
+  return <MapMarker coordinate={markerCoordinate}>{ children }</MapMarker>
 }
