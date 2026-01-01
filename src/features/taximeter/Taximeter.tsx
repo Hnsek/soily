@@ -6,6 +6,7 @@ import { Location } from "../../types/location"
 import { Car } from "lucide-react-native"
 import { BottomSheet, BottomSheetView } from "../../components/BottomSheet"
 import { Text } from "react-native"
+import { TextInput } from "../../components/Input"
 
 type TaximeterProps = {
   initialLocation:  Location
@@ -26,8 +27,9 @@ export const Taximeter = ({ initialLocation} : TaximeterProps) => {
         </AnimatedMapMarker>
       </Map>
       <BottomSheet className="absolute h-full w-full" enableDynamicSizing enableHandlePanningGesture enableContentPanningGesture>
-        <BottomSheetView>
-          <Text>Test</Text>
+        <BottomSheetView className="p-5 gap-2">
+          <Text className="text-xl font-bold">Value per KM</Text>
+          <TextInput inputMode="numeric" keyboardType="numeric"/>
         </BottomSheetView>
       </BottomSheet>
 </SafeAreaView>
