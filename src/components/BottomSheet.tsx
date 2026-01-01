@@ -9,12 +9,10 @@ type BottomSheetProps = {
 } & ComponentProps<typeof BottomSheetRoot>
 
 export const BottomSheet = ({children, className, ...bottomSheetProps} : BottomSheetProps) => {
-  return <View className={className}>
-     <GestureHandlerRootView>
+  return <View className={className} pointerEvents="box-none">
         <BottomSheetRoot {...bottomSheetProps}>
           {children}
         </BottomSheetRoot>
-     </GestureHandlerRootView> 
   </View>
 }
 
