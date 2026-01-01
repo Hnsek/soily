@@ -4,6 +4,8 @@ import useLocation from "../../hooks/useLocation"
 import { useCamera } from "../../hooks/useCameraRef"
 import { Location } from "../../types/location"
 import { Car } from "lucide-react-native"
+import { BottomSheet, BottomSheetView } from "../../components/BottomSheet"
+import { Text } from "react-native"
 
 type TaximeterProps = {
   initialLocation:  Location
@@ -22,7 +24,11 @@ export const Taximeter = ({ initialLocation} : TaximeterProps) => {
         <AnimatedMapMarker coordinate={[location.longitude, location.latitude]}>
           <Car height={40} width={40}/>
         </AnimatedMapMarker>
-
       </Map>
+      <BottomSheet className="absolute h-full w-full" enableDynamicSizing enableHandlePanningGesture enableContentPanningGesture>
+        <BottomSheetView>
+          <Text>Test</Text>
+        </BottomSheetView>
+      </BottomSheet>
 </SafeAreaView>
 }
