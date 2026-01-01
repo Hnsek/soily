@@ -7,6 +7,8 @@ import { Car } from "lucide-react-native"
 import { BottomSheet, BottomSheetView } from "../../components/BottomSheet"
 import { Text } from "react-native"
 import { TextInput } from "../../components/Input"
+import { useState } from "react"
+import { useTaximeterForm } from "./forms/useTaximeterForm"
 
 type TaximeterProps = {
   initialLocation:  Location
@@ -19,6 +21,8 @@ export const Taximeter = ({ initialLocation} : TaximeterProps) => {
 
   const { cameraRef } = useCamera(location)
   
+  const form = useTaximeterForm()
+
   return <SafeAreaView>
       <Map>
         <MapCamera ref={cameraRef} zoomLevel={17} centerCoordinate={[location.longitude, location.latitude]}/>
@@ -29,7 +33,7 @@ export const Taximeter = ({ initialLocation} : TaximeterProps) => {
       <BottomSheet className="absolute h-full w-full" enableDynamicSizing enableHandlePanningGesture enableContentPanningGesture>
         <BottomSheetView className="p-5 gap-2">
           <Text className="text-xl font-bold">Value per KM</Text>
-          <TextInput inputMode="numeric" keyboardType="numeric"/>
+          <TextInput {...form.register("value")} inputMode="numeric" keyboardType="numeric"/>
         </BottomSheetView>
       </BottomSheet>
 </SafeAreaView>
