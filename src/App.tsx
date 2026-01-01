@@ -14,6 +14,7 @@ import {
 } from 'react-native-safe-area-context';
 import Router from './Router';
 import "../global.css"
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -27,11 +28,11 @@ function App() {
 }
 
 function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
   return (
     <SafeAreaView style={styles.container}>
-      <Router/>
+      <GestureHandlerRootView>
+        <Router/>
+      </GestureHandlerRootView>
     </SafeAreaView>
   );
 }
