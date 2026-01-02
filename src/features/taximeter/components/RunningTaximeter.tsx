@@ -4,19 +4,10 @@ import { TextInput } from "../../../components/Input"
 import { Button } from "../../../components/Button"
 import { Controller } from "react-hook-form"
 import { filterTextAsNumber } from "../utils/filterTextAsNumber"
-import { TaximeterFormValues, useTaximeterForm } from "../hooks/useTaximeterForm"
-import { StartTaximeter } from "../types/StartTaximeter"
+import { useTaximeterForm } from "../hooks/useTaximeterForm"
 
-type StartTaximeterBottomSheetProps = {
-  onStart: (data: StartTaximeter) => void
-}
 
-const format = (taximeterFormValues : TaximeterFormValues) : StartTaximeter => {
-   return Object.assign(taximeterFormValues, { price: parseFloat(taximeterFormValues.price) })
-
-}
-
-export const StartTaximeterBottomSheet = ({onStart} : StartTaximeterBottomSheetProps) => {
+export const RunningTaximeter = () => {
   const form = useTaximeterForm()
   
   return <BottomSheet index={1} snapPoints={["5%","25%"]} className="absolute h-full w-full" enableDynamicSizing enableHandlePanningGesture enableContentPanningGesture>
@@ -36,8 +27,7 @@ export const StartTaximeterBottomSheet = ({onStart} : StartTaximeterBottomSheetP
           if(!form.formState.isValid){
              return
           }
-          
-          onStart(format(form.getValues()))
+             console.warn(form.getValues())
           }}>
             <Text className="text-xl text-white font-bold">Start</Text>
         </Button>

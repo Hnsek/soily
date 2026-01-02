@@ -1,4 +1,4 @@
-export type StartTaximeter = {
+export type Fare = {
   currency:string;
   price: number;
 }

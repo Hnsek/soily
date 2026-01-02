@@ -4,9 +4,9 @@ import useLocation from "../../hooks/useLocation"
 import { useCamera } from "../../hooks/useCameraRef"
 import { Location } from "../../types/location"
 import { Car } from "lucide-react-native"
-import { StartTaximeterBottomSheet } from "./components/StartTaximeterBottomSheet"
+import { StartTaximeter } from "./components/StartTaximeter"
 import { useState } from "react"
-import { RunningTaximeterBottomSheet } from "./components/RunningTaximeterBottomSheet"
+import { RunningTaximeter } from "./components/RunningTaximeter"
 
 type TaximeterProps = {
   initialLocation:  Location
@@ -30,9 +30,9 @@ export const Taximeter = ({ initialLocation} : TaximeterProps) => {
       </Map>
       {
         started ?
-          <RunningTaximeterBottomSheet/>
+          <RunningTaximeter/>
           :
-          <StartTaximeterBottomSheet onStart={(formValues) => {
+          <StartTaximeter onStart={(formValues) => {
             setStarted(true)
           }}/> 
       }
