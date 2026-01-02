@@ -5,8 +5,8 @@ import { useCamera } from "../../hooks/useCameraRef"
 import { Location } from "../../types/location"
 import { Car } from "lucide-react-native"
 import { StartTaximeter } from "./components/StartTaximeter"
-import { useState } from "react"
 import { RunningTaximeter } from "./components/RunningTaximeter"
+import { useFlag } from "./hooks/useFlag"
 
 type TaximeterProps = {
   initialLocation:  Location
@@ -19,7 +19,9 @@ export const Taximeter = ({ initialLocation} : TaximeterProps) => {
 
   const { cameraRef } = useCamera(location)
   
-  const [started, setStarted] = useState(false)
+  const { flag, start, started } = useFlag(location)
+  
+  console.warn("flag: ", flag)
 
   return <SafeAreaView>
       <Map>
@@ -32,9 +34,11 @@ export const Taximeter = ({ initialLocation} : TaximeterProps) => {
         started ?
           <RunningTaximeter/>
           :
-          <StartTaximeter onStart={(formValues) => {
-            setStarted(true)
-          }}/> 
+          <StartTaximeter onStart={(formValues) => start({
+            currency:formValues.currency,
+            price: formValues.price,
+            route: [ [ location.longitude, location.latitude ] ]
+          })}/> 
       }
   </SafeAreaView>
 }
