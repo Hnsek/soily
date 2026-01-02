@@ -4,13 +4,6 @@ import useLocation from "../../hooks/useLocation"
 import { useCamera } from "../../hooks/useCameraRef"
 import { Location } from "../../types/location"
 import { Car } from "lucide-react-native"
-import { BottomSheet, BottomSheetView } from "../../components/BottomSheet"
-import { Text, View } from "react-native"
-import { TextInput } from "../../components/Input"
-import { useTaximeterForm } from "./forms/useTaximeterForm"
-import { Button } from "../../components/Button"
-import { Controller } from "react-hook-form"
-import { filterTextAsNumber } from "./utils/filterTextAsNumber"
 import { StartTaximeter } from "./components/StartTaximeter"
 
 type TaximeterProps = {
@@ -23,8 +16,6 @@ export const Taximeter = ({ initialLocation} : TaximeterProps) => {
   const { location } = useLocation(initialLocation) as { location : Location}  
 
   const { cameraRef } = useCamera(location)
-  
-  const form = useTaximeterForm()
 
   return <SafeAreaView>
       <Map>
@@ -33,6 +24,6 @@ export const Taximeter = ({ initialLocation} : TaximeterProps) => {
           <Car height={40} width={40}/>
         </AnimatedMapMarker>
       </Map>
-      <StartTaximeter/>
-</SafeAreaView>
+      <StartTaximeter/> 
+  </SafeAreaView>
 }
