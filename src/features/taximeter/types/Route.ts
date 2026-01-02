@@ -1,5 +1,5 @@
 import { Fare } from "./Fare";
 
-export type TaximeterRoute = {
+export type Route = {
   coordinates: [longitude : number, latitude: number][]
 } & Fare
