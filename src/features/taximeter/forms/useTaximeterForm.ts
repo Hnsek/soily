@@ -4,15 +4,17 @@ import z from "zod"
 
 export const schema = z.object({
   currency: z.string().nonempty(),
-  value: z.string().nonempty()
+  price: z.string().nonempty()
 })
+
+export type TaximeterFormValues = z.infer<typeof schema>
 
 export const useTaximeterForm = () => {
   const form = useForm({
    resolver: zodResolver(schema),
    defaultValues:{
     currency:"dollar",
-    value: "0"
+    price: "0"
    }
   })
 
