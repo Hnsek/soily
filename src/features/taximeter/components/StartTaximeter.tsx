@@ -32,13 +32,9 @@ export const StartTaximeter = ({onStart} : StartTaximeter) => {
           }}
           />          
       <View>
-        <Button onPress={()=> {
-          if(!form.formState.isValid){
-             return
-          }
-          
-          onStart(format(form.getValues()))
-          }}>
+        <Button onPress={form.handleSubmit((values)=> {
+            onStart(format(form.getValues()))
+          })}>
             <Text className="text-xl text-white font-bold">Start</Text>
         </Button>
       </View>        
