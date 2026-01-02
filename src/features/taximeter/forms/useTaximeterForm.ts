@@ -9,7 +9,10 @@ export const schema = z.object({
 
 export const useTaximeterForm = () => {
   const form = useForm({
-   resolver: zodResolver(schema)
+   resolver: zodResolver(schema),
+   defaultValues:{
+     currency:"dollar"
+   }
   })
 
   return form
