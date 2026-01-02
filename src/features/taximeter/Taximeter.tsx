@@ -4,7 +4,7 @@ import useLocation from "../../hooks/useLocation"
 import { useCamera } from "../../hooks/useCameraRef"
 import { Location } from "../../types/location"
 import { Car } from "lucide-react-native"
-import { StartTaximeter } from "./components/StartTaximeter"
+import { StartTaximeterBottomSheet } from "./components/StartTaximeterBottomSheet"
 
 type TaximeterProps = {
   initialLocation:  Location
@@ -24,6 +24,6 @@ export const Taximeter = ({ initialLocation} : TaximeterProps) => {
           <Car height={40} width={40}/>
         </AnimatedMapMarker>
       </Map>
-      <StartTaximeter/> 
+      <StartTaximeterBottomSheet/> 
   </SafeAreaView>
 }

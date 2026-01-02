@@ -6,7 +6,7 @@ import { Controller } from "react-hook-form"
 import { filterTextAsNumber } from "../utils/filterTextAsNumber"
 import { useTaximeterForm } from "../forms/useTaximeterForm"
 
-export const StartTaximeter = () => {
+export const StartTaximeterBottomSheet = () => {
   const form = useTaximeterForm()
   
   return <BottomSheet index={1} snapPoints={["5%","25%"]} className="absolute h-full w-full" enableDynamicSizing enableHandlePanningGesture enableContentPanningGesture>
