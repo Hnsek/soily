@@ -40,6 +40,7 @@ export const useFlag = (location?: Location) => {
     start,
     flag,
     reset,
-    stop
+    stop,
+    started
   }
 }
