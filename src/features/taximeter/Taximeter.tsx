@@ -9,6 +9,8 @@ import { Text, View } from "react-native"
 import { TextInput } from "../../components/Input"
 import { useTaximeterForm } from "./forms/useTaximeterForm"
 import { Button } from "../../components/Button"
+import { Controller } from "react-hook-form"
+import { filterTextAsNumber } from "./utils/filterTextAsNumber"
 
 type TaximeterProps = {
   initialLocation:  Location
@@ -30,18 +32,28 @@ export const Taximeter = ({ initialLocation} : TaximeterProps) => {
           <Car height={40} width={40}/>
         </AnimatedMapMarker>
       </Map>
-      <BottomSheet className="absolute h-full w-full" enableDynamicSizing enableHandlePanningGesture enableContentPanningGesture>
+      <BottomSheet snapPoints={["5%","25%"]} className="absolute h-full w-full" enableDynamicSizing enableHandlePanningGesture enableContentPanningGesture>
         <BottomSheetView className="p-5 gap-2">
-          {/* <View> */}
-          {/*   <Text className="text-xl font-bold">Currency symbol</Text> */}
-          {/*   <TextInput {...form.register("currency")} defaultValue="$"/> */}
-          {/* </View> */}
+          <Controller
+            control={form.control}
+            name="value"
+            render={({field}) => {
+             return <View>
+              <Text className="text-xl font-bold">Price per KM ($)</Text>     
+                <TextInput onChangeText={(text) => field.onChange(filterTextAsNumber(text))} value={`${field.value}`} inputMode="numeric" keyboardType="numeric"/>
+              </View>                                                               
+            }}
+            />
+          
           <View>
-            <Text className="text-xl font-bold">Price per KM ($)</Text>
-            <TextInput {...form.register("value")} inputMode="numeric" keyboardType="numeric"/>
-          </View>
-          <View>
-            <Button>
+            <Button onPress={()=> {
+                if(!form.formState.isValid){
+                   return
+                }
+
+                console.warn(form.getValues())
+
+            }}>
               <Text className="text-xl text-white font-bold">Start</Text>
             </Button>
           </View>
