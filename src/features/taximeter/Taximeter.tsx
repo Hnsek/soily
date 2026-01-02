@@ -32,7 +32,7 @@ export const Taximeter = ({ initialLocation} : TaximeterProps) => {
           <Car height={40} width={40}/>
         </AnimatedMapMarker>
       </Map>
-      <BottomSheet snapPoints={["5%","25%"]} className="absolute h-full w-full" enableDynamicSizing enableHandlePanningGesture enableContentPanningGesture>
+      <BottomSheet index={1} snapPoints={["5%","25%"]} className="absolute h-full w-full" enableDynamicSizing enableHandlePanningGesture enableContentPanningGesture>
         <BottomSheetView className="p-5 gap-2">
           <Controller
             control={form.control}
