@@ -19,7 +19,7 @@ export const Taximeter = ({ initialLocation} : TaximeterProps) => {
 
   const { cameraRef } = useCamera(location)
   
-  const [isStarted, setIsStarted] = useState(false)
+  const [started, setStarted] = useState(false)
 
   return <SafeAreaView>
       <Map>
@@ -29,10 +29,12 @@ export const Taximeter = ({ initialLocation} : TaximeterProps) => {
         </AnimatedMapMarker>
       </Map>
       {
-        isStarted ?
+        started ?
           <RunningTaximeterBottomSheet/>
           :
-          <StartTaximeterBottomSheet/> 
+          <StartTaximeterBottomSheet onStart={(formValues) => {
+            setStarted(true)
+          }}/> 
       }
   </SafeAreaView>
 }
