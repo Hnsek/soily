@@ -32,7 +32,7 @@ export const Taximeter = ({ initialLocation} : TaximeterProps) => {
       </Map>
       {
         started ?
-          <RunningTaximeter/>
+          <RunningTaximeter flag={flag}/>
           :
           <StartTaximeter onStart={(formValues) => start({
             currency:formValues.currency,
