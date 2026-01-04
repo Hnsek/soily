@@ -22,16 +22,16 @@ const defaultFlag : Flag = {
 export const useFlag = (location?: Location) => {
   const [ flag, setFlag ] = useState<Flag>(defaultFlag)
   const [started, setStarted] = useState<boolean>(false)
-
+  
   useEffect(() => {
-
+    
     if(!started || !location){
       return
     }
   
     setFlag(generateNewFlag(flag, location))
 
-  }, [location?.latitude, location?.longitude, started])  
+  }, [location, started])  
 
   const start = (flag : Flag ) => {
     setStarted(true)
