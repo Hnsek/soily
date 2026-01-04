@@ -1,20 +1,10 @@
 import { useEffect, useState } from "react"
 import { Flag } from "../types/Flag"
-import { Location } from "../../../types/location"
-import { getPathLength } from "../../../services/geospatial"
-import { convertCoordinatesArrayToObject } from "../utils/convert-coordinates"
 import { createFlag, getFlag, updateFlag } from "../../../services/flag"
 import { BackgroundActionOptions, startBackgroundAction } from "../../../services/background-action"
 import { watchPosition } from "../../../services/location"
 import { AppState } from "react-native"
-
-const generateNewFlag = (oldFlag : Flag, location: Location) => {
-  const route : [longitude : number, latitude : number][] = [...oldFlag.route, [location.longitude, location.latitude]]  
-  const distance = getPathLength(convertCoordinatesArrayToObject(route))
-
-  return Object.assign(oldFlag, { route, distance })
-    
-}
+import { generateNewFlag } from "../utils/flag"
 
 const backgroundActionOptions : BackgroundActionOptions = {
   taskDesc: "Easyroute is using your GPS to track your location.",
