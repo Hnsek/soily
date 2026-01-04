@@ -1,5 +1,5 @@
 import { SafeAreaView } from "react-native-safe-area-context"
-import { AnimatedMapMarker, Map, MapCamera } from "../../components/Map"
+import { AnimatedMapMarker, LineLayer, Map, MapCamera, ShapeSource } from "../../components/Map"
 import useLocation from "../../hooks/useLocation"
 import { useCamera } from "../../hooks/useCameraRef"
 import { Location } from "../../types/location"
@@ -29,6 +29,21 @@ export const Taximeter = ({ initialLocation} : TaximeterProps) => {
         <AnimatedMapMarker coordinate={[location.longitude, location.latitude]}>
           <Car height={40} width={40}/>
         </AnimatedMapMarker>
+        {
+          flag.route.length > 2 ?
+           <ShapeSource id="route-shape" shape={{
+             type: 'Feature',
+             geometry: {
+               type: 'LineString',
+               coordinates: flag.route,
+             },
+             properties: {},
+           }}>
+             <LineLayer id="route-line" style={{ lineColor: '#36D7F4', lineWidth: 5 }} />
+          </ShapeSource>
+          :
+            undefined
+        }
       </Map>
       {
         started ?
@@ -37,7 +52,8 @@ export const Taximeter = ({ initialLocation} : TaximeterProps) => {
           <StartTaximeter onStart={(formValues) => start({
             currency:formValues.currency,
             price: formValues.price,
-            route: [ [ location.longitude, location.latitude ] ]
+            route: [ [ location.longitude, location.latitude ] ],
+            distance: 0
           })}/> 
       }
   </SafeAreaView>
