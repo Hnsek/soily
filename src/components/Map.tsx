@@ -1,5 +1,5 @@
-import { MapView, Camera, CameraRef, MarkerView } from "@maplibre/maplibre-react-native"
-import { ReactElement, ReactNode, Ref, useEffect, useState } from "react";
+import { MapView, Camera, CameraRef, MarkerView, LineLayer as LineLayerRoot, ShapeSource as ShapeSourceRoot } from "@maplibre/maplibre-react-native"
+import { ComponentProps, ReactElement, ReactNode, Ref, useEffect, useState } from "react";
 import { View } from "react-native";
 import { useAnimatedReaction, useSharedValue, withTiming } from "react-native-reanimated";
 import { runOnJS } from "react-native-worklets";
@@ -66,4 +66,22 @@ export const AnimatedMapMarker = ({ children, coordinate } : AnimatedMapMarkerPr
   )
 
   return <MapMarker coordinate={markerCoordinate}>{ children }</MapMarker>
+}
+
+type ShapeSourceProps = ComponentProps<typeof ShapeSourceRoot>
+
+export const ShapeSource = ({ children, ...props }: ShapeSourceProps) => {
+
+  return (
+    <ShapeSourceRoot {...props}>
+      {children}
+    </ShapeSourceRoot>
+  );
+}
+
+
+type LineLayerProps = ComponentProps<typeof LineLayerRoot>
+
+export const LineLayer = ({ ...props} : LineLayerProps) => {
+  return <LineLayerRoot {...props}/>
 }
