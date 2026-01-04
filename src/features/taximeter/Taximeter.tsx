@@ -19,7 +19,7 @@ export const Taximeter = ({ initialLocation} : TaximeterProps) => {
 
   const { cameraRef } = useCamera(location)
   
-  const { flag, start, started } = useFlag(location)
+  const { flag, start, started } = useFlag()
   
   console.warn("flag: ", flag)
 
@@ -30,7 +30,7 @@ export const Taximeter = ({ initialLocation} : TaximeterProps) => {
           <Car height={40} width={40}/>
         </AnimatedMapMarker>
         {
-          flag.route.length > 2 ?
+          flag.route.length > 1 ?
            <ShapeSource id="route-shape" shape={{
              type: 'Feature',
              geometry: {
