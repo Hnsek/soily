@@ -10,6 +10,7 @@ module.exports = function (api) {
     ],
     plugins: [
       '@babel/plugin-transform-export-namespace-from',
+      ["@babel/plugin-proposal-decorators", { "legacy": true }],
       'react-native-worklets/plugin',
     ],
   };
