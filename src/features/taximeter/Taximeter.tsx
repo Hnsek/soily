@@ -7,11 +7,15 @@ import { Car } from "lucide-react-native"
 import { StartTaximeter } from "./components/StartTaximeter"
 import { RunningTaximeter } from "./components/RunningTaximeter"
 import { useFlag } from "./hooks/useFlag"
+import { useNavigation } from "@react-navigation/native"
+import { NativeStackNavigationProp } from "@react-navigation/native-stack"
+import { RouteList } from "../../Router"
 
 type TaximeterProps = {
   initialLocation:  Location
 }
 
+type Navigation = NativeStackNavigationProp<RouteList,"Taximeter">
 
 export const Taximeter = ({ initialLocation} : TaximeterProps) => {
   
@@ -21,6 +25,8 @@ export const Taximeter = ({ initialLocation} : TaximeterProps) => {
   
   const { flag, start, started } = useFlag()
   
+  const navigation = useNavigation<Navigation>()
+
   return <SafeAreaView>
       <Map>
         <MapCamera ref={cameraRef} zoomLevel={17} centerCoordinate={[location.longitude, location.latitude]}/>
@@ -45,7 +51,7 @@ export const Taximeter = ({ initialLocation} : TaximeterProps) => {
       </Map>
       {
         started ?
-          <RunningTaximeter flag={flag}/>
+          <RunningTaximeter flag={flag} onStop={() => navigation.navigate("TaximeterDetails",{ flag })}/>
           :
           <StartTaximeter onStart={(formValues) => start({
             currency:formValues.currency,
