@@ -7,15 +7,15 @@ import { twMerge } from "tailwind-merge";
 
 type MapProps = {
     className?: string;
-    children?: ReactNode
-}
+    children?: ReactNode,
+} & ComponentProps<typeof MapView>
 
-export const Map = ({className, children} : MapProps) : ReactNode  => {
+export const Map = ({className, children, ...props} : MapProps) : ReactNode  => {
   return <View className={twMerge(className, "w-full h-full")}>
-    <MapView
-      
+    <MapView 
       mapStyle="https://tiles.openfreemap.org/styles/liberty"
       style={[{height:"100%", width:"100%"}]}
+      {...props}
       >
       {children}
   </MapView>
