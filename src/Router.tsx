@@ -2,7 +2,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { TaximeterScreen } from './features/taximeter/TaximeterScreen';
 import { TaximeterDetails } from './features/taximeter/TaximeterDetails';
-const Stack = createNativeStackNavigator()
+import { Flag } from './features/taximeter/types/Flag';
+
+export type RouteList = {
+  Taximeter: undefined;
+  TaximeterDetails: { flag: Flag }
+}
+
+const Stack = createNativeStackNavigator<RouteList>()
 
 export default () => {
     return <NavigationContainer>
