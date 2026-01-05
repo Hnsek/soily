@@ -6,9 +6,6 @@ export const useCamera = (location? : Location) => {
   const cameraRef = useRef<CameraRef>(null)
 
   useEffect(() => {
-      
-      console.warn("location: ", location)
-
       if(!location){
         return
       }
