@@ -4,7 +4,9 @@ import { Button } from "../../../components/Button"
 import { Flag } from "../types/Flag"
 
 type RunningTaximeterProps = {
-  flag:Flag
+  flag:Flag,
+  onStop: (flag : Flag) => unknown
+
 }
 
 const calculateFinalPrice = (distance : number, price: number) => {
@@ -15,7 +17,7 @@ const calculateFinalPrice = (distance : number, price: number) => {
   return (distance / 1000) * price
 } 
 
-export const RunningTaximeter = ({ flag }: RunningTaximeterProps) => {
+export const RunningTaximeter = ({ flag, onStop }: RunningTaximeterProps) => {
   
   
 
@@ -32,8 +34,7 @@ export const RunningTaximeter = ({ flag }: RunningTaximeterProps) => {
         </View>
       </View>                                                               
       <View>
-        <Button className="bg-red-500" onPress={()=> {
-          }}>
+        <Button className="bg-red-500" onPress={()=> onStop(flag)}>
             <Text className="text-xl text-white font-bold">Finish</Text>
         </Button>
       </View>        
