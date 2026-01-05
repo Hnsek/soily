@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { Flag } from "../types/Flag"
-import { createFlag, getFlag, updateFlag } from "../../../services/flag"
+import { createFlag, getFlag, updateFlag, upsertFlag } from "../../../services/flag"
 import { BackgroundActionOptions, startBackgroundAction } from "../../../services/background-action"
 import { watchPosition } from "../../../services/location"
 import { AppState } from "react-native"
@@ -37,9 +37,9 @@ export const useFlag = () => {
     startBackgroundAction(async ()=> {
       watchPosition(async (position) => {
         const newFlag = generateNewFlag(flag, position.location)
-        const updated = flag.id ? await updateFlag (flag.id, newFlag) : await createFlag(newFlag)
+        const upserted = await upsertFlag(newFlag)
 
-        setFlag(updated)
+        setFlag(upserted)
       })
     }, backgroundActionOptions)
 
