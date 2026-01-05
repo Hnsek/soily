@@ -32,8 +32,12 @@ export const getFlag = async (id: string) => {
 // export const watchFlag = (options?: PouchDB.Core.ChangesOptions) => database.changes(options)
 //
 
-export const upsertFlag = async (id: string, flag: Flag) => {
-  const model = await table.find(id)
+export const upsertFlag = async (flag: Flag) => {
+  if(!flag.id){
+    return createFlag(flag)
+  }
+
+  const model = await table.find(flag.id)
 
   if(model.id){
       return model.update((model) => Object.assign(model,flag))
