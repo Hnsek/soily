@@ -21,8 +21,6 @@ export const Taximeter = ({ initialLocation} : TaximeterProps) => {
   
   const { flag, start, started } = useFlag()
   
-  console.warn("flag: ", flag)
-
   return <SafeAreaView>
       <Map>
         <MapCamera ref={cameraRef} zoomLevel={17} centerCoordinate={[location.longitude, location.latitude]}/>
