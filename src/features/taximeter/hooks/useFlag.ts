@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
 import { Flag } from "../types/Flag"
-import { createFlag, getFlag, updateFlag, upsertFlag } from "../../../services/flag"
+import { createFlag, getFlag, upsertFlag } from "../../../services/flag"
 import { BackgroundActionOptions, startBackgroundAction } from "../../../services/background-action"
 import { watchPosition } from "../../../services/location"
 import { AppState } from "react-native"
 import { generateNewFlag } from "../utils/flag"
+import { CreateFlag } from "../dtos/CreateFlag"
 
 const backgroundActionOptions : BackgroundActionOptions = {
   taskDesc: "Easyroute is using your GPS to track your location.",
@@ -17,26 +18,21 @@ const backgroundActionOptions : BackgroundActionOptions = {
   
 }
 
-const defaultFlag : Flag = {
-  currency:"dollar",
-  price: 0,
-  route: [],
-  distance: 0
-}
-
 export const useFlag = () => {
-  const [ flag, setFlag ] = useState<Flag>(defaultFlag)
-  const [started, setStarted] = useState<boolean>(false)
-  
+  const [ flag, setFlag ] = useState<Flag>()
+
   useEffect(() => {
     
-    if(!started){
+    if(!flag){
       return
     }
 
     startBackgroundAction(async ()=> {
       watchPosition(async (position) => {
         const newFlag = generateNewFlag(flag, position.location)
+        
+        console.warn("newFlag: ", newFlag)
+
         const upserted = await upsertFlag(newFlag)
 
         setFlag(upserted)
@@ -50,21 +46,21 @@ export const useFlag = () => {
       }
     })
 
-  }, [started])  
+  }, [flag])  
 
-  const start = (flag : Flag ) => {
-    setStarted(true)
-    setFlag(flag)
+  const start = async (newFlag : CreateFlag ) => {
+    const created = await createFlag(newFlag)
+    setFlag(created)
   }
 
-  const reset = () => setFlag(defaultFlag)
-  const stop = () => setStarted(false)
+  const reset = () => setFlag(undefined)
+  const stop = () => setFlag(undefined)
 
   return {
     start,
     flag,
     reset,
     stop,
-    started
+    started: !!flag
   }
 }
