@@ -8,5 +8,12 @@ export class FlagModel extends Model{
   @field("currency") currency! : string;
   @field("price") price! : number;
   @json("route",  route => Array.isArray(route) ? route : [] ) route! : [longitude: number, latitude: number][]; 
- 
+  
+  get finalPrice(){
+    if(!this.distance) {
+    return 0
+    }
+
+    return (this.distance / 1000) * this.price
+  }
 }
