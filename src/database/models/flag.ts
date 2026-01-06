@@ -16,4 +16,16 @@ export class FlagModel extends Model{
 
     return (this.distance / 1000) * this.price
   }
+
+  getData(){
+    return {
+      distance: this.distance,
+      currency: this.currency,
+      price: this.price,
+      route: this.route,
+      finalPrice: this.finalPrice,
+      id: this.id
+    }
+  }
+   
 }
