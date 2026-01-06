@@ -6,7 +6,17 @@ import { convertCoordinatesArrayToObject } from "./convert-coordinates"
 export const generateNewFlag = (oldFlag : Flag, location: Location) => {
   const route : [longitude : number, latitude : number][] = [...oldFlag.route, [location.longitude, location.latitude]]  
   const distance = getPathLength(convertCoordinatesArrayToObject(route))
+  
+  const finalPrice = calculateFinalPrice(distance, oldFlag.price)
 
-  return Object.assign(oldFlag, { route, distance })
+  return Object.assign(oldFlag, { route, distance, finalPrice })
     
 }
+
+export const calculateFinalPrice = (distance : number, price: number) => {
+  if(!distance) {
+    return 0
+  }
+
+  return (distance / 1000) * price
+} 
