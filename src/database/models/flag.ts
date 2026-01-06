@@ -4,9 +4,9 @@ import { field, json } from '@nozbe/watermelondb/decorators'
 export class FlagModel extends Model{
   static table: string = "flag";
 
-  @field("distance") distance : any;
-  @field("currency") currency : any;
-  @field("price") price : any;
-  @json("route",  route => Array.isArray(route) ? route : [] ) route : any; 
+  @field("distance") distance! : number;
+  @field("currency") currency! : string;
+  @field("price") price! : number;
+  @json("route",  route => Array.isArray(route) ? route : [] ) route! : number; 
  
 }
