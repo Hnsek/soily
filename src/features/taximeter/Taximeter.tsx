@@ -10,6 +10,8 @@ import { useFlag } from "./hooks/useFlag"
 import { useNavigation } from "@react-navigation/native"
 import { NativeStackNavigationProp } from "@react-navigation/native-stack"
 import { RouteList } from "../../Router"
+import { Fare } from "./types/Fare"
+import { CreateFlag } from "./dtos/CreateFlag"
 
 type TaximeterProps = {
   initialLocation:  Location
@@ -23,7 +25,7 @@ export const Taximeter = ({ initialLocation} : TaximeterProps) => {
 
   const { cameraRef } = useCamera(location)
   
-  const { flag, start, started } = useFlag()
+  const { flag, start } = useFlag()
   
   const navigation = useNavigation<Navigation>()
 
@@ -34,7 +36,7 @@ export const Taximeter = ({ initialLocation} : TaximeterProps) => {
           <Car height={40} width={40}/>
         </AnimatedMapMarker>
         {
-          flag.route.length > 1 ?
+          flag && flag.route.length > 1 ?
            <ShapeSource id="route-shape" shape={{
              type: 'Feature',
              geometry: {
@@ -50,15 +52,20 @@ export const Taximeter = ({ initialLocation} : TaximeterProps) => {
         }
       </Map>
       {
-        started ?
+        flag ?
           <RunningTaximeter flag={flag} onStop={() => navigation.navigate("TaximeterDetails",{ flag })}/>
           :
-          <StartTaximeter onStart={(formValues) => start({
-            currency:formValues.currency,
-            price: formValues.price,
-            route: [ [ location.longitude, location.latitude ] ],
-            distance: 0
-          })}/> 
+          <StartTaximeter onStart={(fare) => start(convertFareToNewFlag(fare, location))}/> 
       }
   </SafeAreaView>
+}
+
+const convertFareToNewFlag = (fare : Fare, location : Location) : CreateFlag => {
+  return {
+    currency:fare.currency,
+    price: fare.price,
+    route: [ [ location.longitude, location.latitude ] ],
+    distance: 0,
+
+  }
 }
