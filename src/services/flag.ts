@@ -10,7 +10,7 @@ export const createFlag = async (flag: Flag) : Promise<Flag>=> {
       Object.assign(model, flag)
     })
   })
-  return extractProperties(model)
+  return model
 }
 
 export const updateFlag = async (id: string, flag: Flag) => {
@@ -20,17 +20,13 @@ export const updateFlag = async (id: string, flag: Flag) => {
     return model.update((model) => Object.assign(model, flag))
   })
 
-  return extractProperties(updatedModel)
+  return updatedModel
 }
-
-// export const deleteFlag = (flag: Flag) => database.remove(flag)
 
 export const getFlag = async (id: string) => {
   const model = await table.find(id)
-  return extractProperties(model)
+  return model
 }
-// export const watchFlag = (options?: PouchDB.Core.ChangesOptions) => database.changes(options)
-//
 
 export const upsertFlag = async (flag: Flag) => {
   if(!flag.id){
@@ -44,9 +40,4 @@ export const upsertFlag = async (flag: Flag) => {
   }
 
   return createFlag(flag)
-}
-
-const extractProperties = (model : FlagModel) => {
-  const {price, distance, currency, route, id} = model
-  return {price, distance, currency, route, id}  
 }
