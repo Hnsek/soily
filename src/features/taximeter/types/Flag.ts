@@ -1,7 +1,4 @@
-import { Fare } from "./Fare";
+import { Model } from "@nozbe/watermelondb";
+import { FlagModel } from "../../../database/models/flag";
 
-export type Flag = {
-  id?:string;
-  route: [longitude : number, latitude: number][],
-  distance: number
-} & Fare
+export type Flag = Omit<FlagModel, Exclude<keyof Model, "id">>
