@@ -1,4 +1,7 @@
-import { Model } from "@nozbe/watermelondb";
-import { FlagModel } from "../../../database/models/flag";
+import { Fare } from "./Fare";
 
-export type Flag = Omit<FlagModel, Exclude<keyof Model, "id"> | "getData">
+export type Flag = {
+  route: [longitude : number, latitude: number][],
+  distance: number,
+  finalPrice: number
+} & Fare
