@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { Flag } from "../types/Flag"
 import { createFlag, getFlag, upsertFlag } from "../../../services/flag"
 import { BackgroundActionOptions, startBackgroundAction } from "../../../services/background-action"
-import { watchPosition } from "../../../services/location"
+import { clearWatch, watchPosition } from "../../../services/location"
 import { AppState } from "react-native"
 import { generateNewFlag } from "../utils/flag"
 import { CreateFlag } from "../dtos/CreateFlag"
@@ -18,25 +18,40 @@ const backgroundActionOptions : BackgroundActionOptions = {
   
 }
 
+let watchId : number | null = null
+
 export const useFlag = () => {
   const [ flag, setFlag ] = useState<Flag>()
 
   useEffect(() => {
-    
     if(!flag){
       return
     }
 
     startBackgroundAction(async ()=> {
-      watchPosition(async (position) => {
+      console.warn("watchId: ", watchId)
+
+      if(watchId !== null){
+        clearWatch(watchId)
+      }
+      
+      watchId = watchPosition(async (position) => {
+        console.warn("watchPosition")
+
         const newFlag = generateNewFlag(flag, position.location)
         
-        console.warn("newFlag: ", newFlag)
-
         const upserted = await upsertFlag(newFlag)
 
         setFlag(upserted)
-      })
+      },
+      (error) => error,
+      {
+        timeout:Infinity,
+        distanceFilter: 0,
+        enableHighAccuracy: true,
+        maximumAge: 0
+      }
+      )
     }, backgroundActionOptions)
 
     AppState.addEventListener("change", async (state) => {
