@@ -10,7 +10,6 @@ export const useFlag = () => {
   const {
     startTracking,
     stopTracking,
-    isTracking
   } = useBackgroundLocation({
     onError: (err) => console.error(err),
   });
@@ -21,24 +20,12 @@ export const useFlag = () => {
         return
       }
 
-      console.warn("onLocationUpdate")    
-  
       const { longitude, latitude} = location
       const newFlag = generateNewFlag(flag, {longitude : parseFloat(longitude), latitude: parseFloat(latitude)})
-      
-      console.warn("newFlag: ", newFlag)
-
-      console.log('New location:', location);
+    
+      setFlag(newFlag)
     },
   });
-  
-
-    // AppState.addEventListener("change", async (state) => {
-      // if (state === "active" && flag.id){
-        // const gotten = await getFlag(flag.id)
-        // setFlag(gotten)
-      // }
-    // })
 
   const start = async (newFlag : Fare ) => {
     startTracking()
