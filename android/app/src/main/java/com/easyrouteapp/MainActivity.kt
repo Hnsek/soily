@@ -1,4 +1,4 @@
-package com.easyroute
+package com.easyrouteapp
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

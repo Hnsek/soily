@@ -77,22 +77,20 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.easyroute"
+    namespace "com.easyrouteapp"
     defaultConfig {
-        applicationId "com.easyroute"
+        applicationId "com.easyrouteapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 45
+        versionCode 46
         versionName "1.0"
     }
     signingConfigs {
         release {
-          if (project.hasProperty('sign')) {
-            storeFile file(APP_UPLOAD_STORE_FILE)
-            storePassword APP_UPLOAD_STORE_PASSWORD
-            keyAlias APP_UPLOAD_KEY_ALIAS
-            keyPassword APP_UPLOAD_KEY_PASSWORD
-          }
+          storeFile file(APP_UPLOAD_STORE_FILE)
+          storePassword APP_UPLOAD_STORE_PASSWORD
+          keyAlias APP_UPLOAD_KEY_ALIAS
+          keyPassword APP_UPLOAD_KEY_PASSWORD
 
         }
         debug {
@@ -110,7 +108,8 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
+
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
