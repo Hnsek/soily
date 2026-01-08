@@ -1,4 +1,4 @@
-import Geolocation, { GeolocationResponse } from "@react-native-community/geolocation";
+import Geolocation, { GeolocationError, GeolocationOptions, GeolocationResponse } from "@react-native-community/geolocation";
 import { Position } from "../types/location";
 
 const format = (position : GeolocationResponse) : Position => {
@@ -17,9 +17,11 @@ export const getCurrentPosition = () : Promise<Position> => {
   })
 }
 
-export const watchPosition = (success: (position: Position) => void) => {
+export const watchPosition = (success: (position: Position) => void, error?: (error: GeolocationError) => void, options?:GeolocationOptions) => {
   return Geolocation.watchPosition(
     (position) => success(format(position)),
+    (errorResponse) => error?.(errorResponse),
+    options
   )
 }
 
