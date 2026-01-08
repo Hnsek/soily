@@ -12,6 +12,7 @@
     "android:build:aab": "cd android && ./gradlew bundleRelease -Psign=true"
   },
   "dependencies": {
+    "@gabriel-sisjr/react-native-background-location": "^0.8.2",
     "@gorhom/bottom-sheet": "^5.2.8",
     "@hookform/resolvers": "^5.2.2",
     "@maplibre/maplibre-react-native": "^10.4.2",
