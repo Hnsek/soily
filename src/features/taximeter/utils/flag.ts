@@ -3,11 +3,17 @@ import { Location } from "../../../types/location"
 import { Flag } from "../types/Flag"
 import { convertCoordinatesArrayToObject } from "./convert-coordinates"
 
-export const generateNewFlag = (oldFlag : Flag, location: Location) : Flag => {
-  const route : [longitude : number, latitude : number][] = [...oldFlag.route, [location.longitude, location.latitude]]  
+type Coordinates = {
+  longitude: number,
+  latitude: number
+}
+
+export const generateNewFlag = (oldFlag : Flag, coordinates: Coordinates) : Flag => {
+  const route : [longitude : number, latitude : number][] = [...oldFlag.route, [coordinates.longitude, coordinates.latitude]]  
   const distance = getPathLength(convertCoordinatesArrayToObject(route))
-  
-  return Object.assign(oldFlag, { route, distance })
+  const finalPrice = calculateFinalPrice(distance, oldFlag.price)
+
+  return Object.assign(oldFlag, { route, distance, finalPrice })
     
 }
 
