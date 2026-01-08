@@ -1,23 +1,22 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import { NewAppScreen } from '@react-native/new-app-screen';
 import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
 import {
   SafeAreaProvider,
   SafeAreaView,
-  useSafeAreaInsets,
 } from 'react-native-safe-area-context';
 import Router from './Router';
 import "../global.css"
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { useEffect } from 'react';
+import Clarity from "@microsoft/react-native-clarity"
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
+  
+  useEffect(() => {
+    if(!__DEV__){
+      Clarity.initialize("t1eaql5ftm")
+    }
+  }, [])
 
   return (
     <SafeAreaProvider>
