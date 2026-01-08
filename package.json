@@ -7,7 +7,9 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "android:build:apk": "cd android && ./gradlew assembleRelease -Psign=true",
+    "android:build:aab": "cd android && ./gradlew bundleRelease -Psign=true"
   },
   "dependencies": {
     "@gorhom/bottom-sheet": "^5.2.8",
