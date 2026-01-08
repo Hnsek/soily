@@ -30,7 +30,7 @@ export const RunningTaximeter = ({ flag, onStop }: RunningTaximeterProps) => {
         </View>                      
 
         <View className="flex-1 flex flex-row items-center justify-end">
-          <Text className="text-3xl font-bold">${calculateFinalPrice(flag.distance, flag.price)}</Text>     
+          <Text className="text-3xl font-bold">${flag.finalPrice}</Text>     
         </View>
       </View>                                                               
       <View>
