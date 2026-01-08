@@ -1,76 +1,60 @@
 import { useEffect, useState } from "react"
 import { Flag } from "../types/Flag"
-import { createFlag, getFlag, upsertFlag } from "../../../services/flag"
-import { BackgroundActionOptions, startBackgroundAction } from "../../../services/background-action"
-import { clearWatch, watchPosition } from "../../../services/location"
-import { AppState } from "react-native"
 import { generateNewFlag } from "../utils/flag"
-import { CreateFlag } from "../dtos/CreateFlag"
-
-const backgroundActionOptions : BackgroundActionOptions = {
-  taskDesc: "Easyroute is using your GPS to track your location.",
-  taskTitle: "Tracking your location",
-  taskName: "track-location",
-  taskIcon:{
-    name:'ic_launcher',
-    type:'mipmap'
-  },
-  
-}
-
-let watchId : number | null = null
+import { useBackgroundLocation, useLocationUpdates } from "@gabriel-sisjr/react-native-background-location"
+import { Fare } from "../types/Fare"
 
 export const useFlag = () => {
   const [ flag, setFlag ] = useState<Flag>()
+  
+  const {
+    startTracking,
+    stopTracking,
+    isTracking
+  } = useBackgroundLocation({
+    onError: (err) => console.error(err),
+  });
 
-  useEffect(() => {
-    if(!flag){
-      return
-    }
-
-    startBackgroundAction(async ()=> {
-      console.warn("watchId: ", watchId)
-
-      if(watchId !== null){
-        clearWatch(watchId)
+  useLocationUpdates({
+    onLocationUpdate: (location) => {
+      if(!flag){
+        return
       }
+
+      console.warn("onLocationUpdate")    
+  
+      const { longitude, latitude} = location
+      const newFlag = generateNewFlag(flag, {longitude : parseFloat(longitude), latitude: parseFloat(latitude)})
       
-      watchId = watchPosition(async (position) => {
-        console.warn("watchPosition")
+      console.warn("newFlag: ", newFlag)
 
-        const newFlag = generateNewFlag(flag, position.location)
-        
-        const upserted = await upsertFlag(newFlag)
+      console.log('New location:', location);
+    },
+  });
+  
 
-        setFlag(upserted)
-      },
-      (error) => error,
-      {
-        timeout:Infinity,
-        distanceFilter: 0,
-        enableHighAccuracy: true,
-        maximumAge: 0
-      }
-      )
-    }, backgroundActionOptions)
+    // AppState.addEventListener("change", async (state) => {
+      // if (state === "active" && flag.id){
+        // const gotten = await getFlag(flag.id)
+        // setFlag(gotten)
+      // }
+    // })
 
-    AppState.addEventListener("change", async (state) => {
-      if (state === "active" && flag.id){
-        const gotten = await getFlag(flag.id)
-        setFlag(gotten)
-      }
+  const start = async (newFlag : Fare ) => {
+    startTracking()
+    setFlag({
+      ...newFlag,
+      finalPrice:0,
+     route:[],
+     distance:0
     })
-
-  }, [flag])  
-
-  const start = async (newFlag : CreateFlag ) => {
-    const created = await createFlag(newFlag)
-    setFlag(created)
   }
 
   const reset = () => setFlag(undefined)
-  const stop = () => setFlag(undefined)
-
+  const stop = async () => {
+    await stopTracking()
+    setFlag(undefined)
+  }
   return {
     start,
     flag,
