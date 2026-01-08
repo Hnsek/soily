@@ -55,17 +55,7 @@ export const Taximeter = ({ initialLocation} : TaximeterProps) => {
         flag ?
           <RunningTaximeter flag={flag} onStop={() => navigation.navigate("TaximeterDetails",{ flag })}/>
           :
-          <StartTaximeter onStart={(fare) => start(convertFareToNewFlag(fare, location))}/> 
+          <StartTaximeter onStart={(fare) => start(fare)}/> 
       }
   </SafeAreaView>
-}
-
-const convertFareToNewFlag = (fare : Fare, location : Location) : CreateFlag => {
-  return {
-    currency:fare.currency,
-    price: fare.price,
-    route: [ [ location.longitude, location.latitude ] ],
-    distance: 0,
-
-  }
 }
