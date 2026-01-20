@@ -1,5 +1,5 @@
 import { SafeAreaView } from "react-native-safe-area-context"
 
 export const ListPlantMaterial= ()=> {
-  return <SafeAreaView></SafeAreaView>
+  return <SafeAreaView className="w-full h-full bg-background"></SafeAreaView>
 }
