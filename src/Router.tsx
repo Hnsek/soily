@@ -15,7 +15,7 @@ const Stack = createNativeStackNavigator<RouteList>()
 
 export default () => {
     return <NavigationContainer>
-        <Stack.Navigator screenOptions={{headerShown:false}}>
+        <Stack.Navigator initialRouteName='PlantingList' screenOptions={{headerShown:false}}>
             <Stack.Screen name='Taximeter' component={TaximeterScreen}></Stack.Screen>
             <Stack.Screen name='TaximeterDetails' component={TaximeterDetails}></Stack.Screen>
             <Stack.Screen name="PlantingList" component={PlantingList}></Stack.Screen>
