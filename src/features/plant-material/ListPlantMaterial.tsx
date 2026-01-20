@@ -1,5 +1,5 @@
 import { SafeAreaView } from "react-native-safe-area-context"
 
-export const CreatePropagule = ()=> {
+export const ListPlantMaterial= ()=> {
   return <SafeAreaView></SafeAreaView>
 }
