@@ -1,20 +1,20 @@
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ListPlanting } from './features/plantings/ListPlanting';
 import { CreatePlanting } from './features/plantings/CreatePlanting';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 export type RouteList = {
   ListPlanting: undefined;
   CreatePlanting: undefined;
 }
 
-const Stack = createNativeStackNavigator<RouteList>()
+const BottomTab = createBottomTabNavigator<RouteList>()
 
 export default () => {
-    return <NavigationContainer>
-        <Stack.Navigator initialRouteName='ListPlanting' screenOptions={{headerShown:false}}>
-            <Stack.Screen name="ListPlanting" component={ListPlanting}></Stack.Screen>
-            <Stack.Screen name="CreatePlanting" component={CreatePlanting}></Stack.Screen>
-        </Stack.Navigator>
-    </NavigationContainer>
+  return <NavigationContainer>
+    <BottomTab.Navigator initialRouteName='ListPlanting' screenOptions={{headerShown:false}}>
+      <BottomTab.Screen name="ListPlanting" component={ListPlanting}></BottomTab.Screen>
+      <BottomTab.Screen name="CreatePlanting" component={CreatePlanting}></BottomTab.Screen>
+    </BottomTab.Navigator>    
+  </NavigationContainer>
 }
