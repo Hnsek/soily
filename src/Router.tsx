@@ -1,6 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { PlantingList } from './features/planting/PlantingList';
+import { PlantingList } from './features/planting/ListPlanting';
 
 export type RouteList = {
   PlantingList: undefined;
