@@ -14,8 +14,8 @@ const BottomTab = createBottomTabNavigator<BottomTabRouteList>()
 
 const BottomTabScreens =() => {
   return <BottomTab.Navigator initialRouteName='ListPlantMaterial' screenOptions={{headerShown:false}}>
-      <BottomTab.Screen name="ListPlanting" component={ListPlanting}></BottomTab.Screen>
-      <BottomTab.Screen name="ListPlantMaterial" component={ListPlantMaterial}></BottomTab.Screen>
+      <BottomTab.Screen name="ListPlantMaterial" component={ListPlantMaterial} options={{tabBarLabel: "Sementes/Mudas"}}></BottomTab.Screen>
+      <BottomTab.Screen name="ListPlanting" component={ListPlanting} options={{tabBarLabel: "Plantios"}}></BottomTab.Screen>
     </BottomTab.Navigator>    
 }
 
