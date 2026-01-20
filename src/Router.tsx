@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { TaximeterScreen } from './features/taximeter/TaximeterScreen';
 import { TaximeterDetails } from './features/taximeter/TaximeterDetails';
 import { Flag } from './features/taximeter/types/Flag';
-import { PlantingList } from './features/planting/Planting';
+import { PlantingList } from './features/planting/PlantingList';
 
 export type RouteList = {
   PlantingList: undefined;
