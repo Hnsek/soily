@@ -1,5 +1,5 @@
 import { View } from "react-native"
 
-export const Plating = () => {
+export const Planting = () => {
   return <View></View>
 }
