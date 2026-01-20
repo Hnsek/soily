@@ -3,17 +3,19 @@ import { ListPlanting } from './features/plantings/ListPlanting';
 import { CreatePlanting } from './features/plantings/CreatePlanting';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { ListPlantMaterial } from './features/plant-material/ListPlantMaterial';
 
 export type BottomTabRouteList = {
   ListPlanting: undefined;
-  CreatePlanting: undefined;
+  ListPlantMaterial: undefined
 }
 
 const BottomTab = createBottomTabNavigator<BottomTabRouteList>()
 
 const BottomTabScreens =() => {
-  return <BottomTab.Navigator initialRouteName='ListPlanting' screenOptions={{headerShown:false}}>
+  return <BottomTab.Navigator initialRouteName='ListPlantMaterial' screenOptions={{headerShown:false}}>
       <BottomTab.Screen name="ListPlanting" component={ListPlanting}></BottomTab.Screen>
+      <BottomTab.Screen name="ListPlantMaterial" component={ListPlantMaterial}></BottomTab.Screen>
     </BottomTab.Navigator>    
 }
 
