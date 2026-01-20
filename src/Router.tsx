@@ -1,12 +1,9 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Flag } from './features/taximeter/types/Flag';
 import { PlantingList } from './features/planting/PlantingList';
 
 export type RouteList = {
   PlantingList: undefined;
-  Taximeter: undefined;
-  TaximeterDetails: { flag: Flag }
 }
 
 const Stack = createNativeStackNavigator<RouteList>()
