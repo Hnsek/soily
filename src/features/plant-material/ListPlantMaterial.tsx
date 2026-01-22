@@ -3,7 +3,7 @@ import { SafeAreaView } from "react-native-safe-area-context"
 import { Button } from "../../components/Button"
 import { BottomTabRouteList } from "../../Router"
 import { BottomTabScreenProps } from "@react-navigation/bottom-tabs"
-type Props = BottomTabScreenProps<BottomTabRouteList,"ListPlanting">
+type Props = BottomTabScreenProps<BottomTabRouteList,"ListPlantMaterial">
 
 export const ListPlantMaterial= ({ navigation } : Props)=> {
   return <SafeAreaView className="w-full h-full bg-background">
