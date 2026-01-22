@@ -4,10 +4,11 @@ import { CreatePlanting } from './features/plantings/CreatePlanting';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ListPlantMaterial } from './features/plant-material/ListPlantMaterial';
+import { CreatePlantMaterial } from './features/plant-material/CreatePlantMaterial';
 
 export type BottomTabRouteList = {
+  ListPlantMaterial: undefined;
   ListPlanting: undefined;
-  ListPlantMaterial: undefined
 }
 
 const BottomTab = createBottomTabNavigator<BottomTabRouteList>()
@@ -22,6 +23,7 @@ const BottomTabScreens =() => {
 export type StackRouteList = {
   CreatePlanting: undefined;
   Tabs: undefined
+  CreatePlantMaterial: undefined
 }
 
 const Stack = createNativeStackNavigator<StackRouteList>()
@@ -30,6 +32,7 @@ const StackScreens = () => {
    return <Stack.Navigator initialRouteName='Tabs' screenOptions={{headerShown: false}}>
       <Stack.Screen name='Tabs' component={BottomTabScreens}></Stack.Screen>
       <Stack.Screen name='CreatePlanting' component={CreatePlanting}></Stack.Screen>
+      <Stack.Screen name='CreatePlantMaterial' component={CreatePlantMaterial}></Stack.Screen>
     </Stack.Navigator>
 }
 
