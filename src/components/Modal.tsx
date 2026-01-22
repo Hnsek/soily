@@ -1,5 +1,5 @@
-import { createContext, ReactNode, useContext, useState } from "react"
-import { Modal } from "react-native"
+import { ComponentProps, createContext, ReactNode, useContext, useState } from "react"
+import { Modal as ModalRoot } from "react-native"
 
 type ModalContextType = {
   visible: boolean
@@ -31,4 +31,9 @@ export const ModalContainer = ({ children } : ModalContainerType) => {
   
 }
 
+export const Modal = ({children, visible : visibleProp, ...props} : ComponentProps<typeof ModalRoot>) => {
+  const { visible: visibleContext } = useModal()
+
+  return <ModalRoot visible={visibleContext || visibleProp} {...props}>{children}</ModalRoot>
+}
 
