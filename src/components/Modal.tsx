@@ -1,4 +1,4 @@
-import { createContext } from "react"
+import { createContext, ReactNode, useState } from "react"
 import { Modal } from "react-native"
 
 type ModalContextType = {
@@ -10,6 +10,14 @@ const ModalContext = createContext<ModalContextType>({
   toggle: () => undefined
 })
 
-export const ModalContainer = () => {
-  return <Modal></Modal>
+type ModalContainerType = {
+  children: ReactNode
+}
+
+export const ModalContainer = ({ children } : ModalContainerType) => {
+  const [visible, setVisible] = useState<boolean>(false)
+
+  const toggle = () => setVisible(visible => !visible)
+
+  return <ModalContext.Provider value={{visible, toggle}}>{children}</ModalContext.Provider>
 }
