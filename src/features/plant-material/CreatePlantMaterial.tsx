@@ -9,5 +9,5 @@ export const CreatePlantMaterial = () => {
 }
 
 const Container = ({children, className, ...props} : ComponentProps<typeof View>) => {
-  return <View className={twMerge("h-full w-full", className)} {...props}>{children}</View>
+  return <View className={twMerge("h-full w-full bg-background", className)} {...props}>{children}</View>
 }
