@@ -1,39 +1,40 @@
 import { ComponentProps, createContext, ReactNode, useContext, useState } from "react"
-import { Modal as ModalRoot } from "react-native"
+import { Modal as ModalRoot, View} from "react-native"
+import { twMerge } from "tailwind-merge"
 
-type ModalContextType = {
-  visible: boolean
-  toggle: () => unknown
-  show: () => unknown
+type ModelContextType = {
+  visible: boolean,
+  show: () => unknown,
   close: () => unknown
 }
-const ModalContext = createContext<ModalContextType>({
+const ModalContext = createContext<ModelContextType>({
   visible: false,
-  toggle: () => undefined,
   show: () => undefined,
   close: () => undefined
 })
 
 export const useModal = () => useContext(ModalContext)
 
-type ModalContainerType = {
+type ModalContainerProps = {
   children: ReactNode
 }
 
-export const ModalContainer = ({ children } : ModalContainerType) => {
-  const [visible, setVisible] = useState<boolean>(false)
+export const ModalContainer = ({ children } : ModalContainerProps) => {
+  const [visible, setVisible] = useState(false)
 
-  const toggle = () => setVisible(visible => !visible)
   const show = () => setVisible(true)
   const close = () => setVisible(false)
-
-  return <ModalContext.Provider value={{visible, toggle, show, close}}>{children}</ModalContext.Provider>
   
+  return <ModalContext.Provider value={{ visible, show, close}}>{children}</ModalContext.Provider>
 }
 
-export const Modal = ({children, visible : visibleProp, ...props} : ComponentProps<typeof ModalRoot>) => {
-  const { visible: visibleContext } = useModal()
-
-  return <ModalRoot visible={visibleContext || visibleProp} {...props}>{children}</ModalRoot>
+type ModalProps = ComponentProps<typeof ModalRoot>
+export const Modal = ({children, ...props} : ModalProps) => {
+  const { visible } = useModal()
+  return <ModalRoot visible={visible} {...props}>{children}</ModalRoot>
 }
 
+type ModalBackgroundProps = ComponentProps<typeof View>
+export const ModalBackground = ({ children, className, ...props } : ModalBackgroundProps) => {
+  return <View className={twMerge("h-full w-full bg-black/70", className)} {...props}>{children}</View> 
+}
