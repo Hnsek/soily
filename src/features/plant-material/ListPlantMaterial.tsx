@@ -6,14 +6,21 @@ import { PlantMaterialForm } from "./components/PlantMaterialForm"
 import { View } from "react-native"
 import { Button } from "../../components/Button"
 import { Text } from "../../components/Text"
+import { usePlantMaterial } from "./hooks/usePlantMaterial"
 
 type Props = BottomTabScreenProps<BottomTabRouteList,"ListPlantMaterial">
 
 export const ListPlantMaterial= ({ navigation } : Props)=> {
+  
+  const { plantMaterials, create } = usePlantMaterial()
+  
   return <SafeAreaView className="w-full h-full bg-background">
     <Modal id="register-plant-material-modal" transparent>
       <ModalBackground className="flex flex-col justify-end">
-        <PlantMaterialForm onSubmit={() => modalStore.close("register-plant-material-modal")}/>
+        <PlantMaterialForm onSubmit={(plantMaterial) => { 
+          create(plantMaterial)
+          modalStore.close("register-plant-material-modal")
+        }}/>
       </ModalBackground>  
     </Modal>
     <View className="w-full absolute bottom-0 p-4 flex items-center justify-center">
