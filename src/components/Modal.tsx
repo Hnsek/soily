@@ -30,7 +30,17 @@ export const ModalContainer = ({ children } : ModalContainerProps) => {
 
 type ModalProps = ComponentProps<typeof ModalRoot>
 export const Modal = ({children, ...props} : ModalProps) => {
-  const { visible } = useModal()
+
+  const [visible, setVisible] = useState(false)
+  
+  useEffect(() => {
+    if(!props.id){
+      return
+    }
+
+    modalStore.subscribe(props.id, {visible: visible, setVisible})
+  }, [])
+
   return <ModalRoot visible={visible} {...props}>{children}</ModalRoot>
 }
 
