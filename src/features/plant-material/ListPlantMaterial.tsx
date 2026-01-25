@@ -3,7 +3,6 @@ import { BottomTabRouteList } from "../../Router"
 import { BottomTabScreenProps } from "@react-navigation/bottom-tabs"
 import { Modal, ModalBackground, ModalContainer, modalStore } from "../../components/Modal"
 import { PlantMaterialForm } from "./components/PlantMaterialForm"
-import { RegisterPlantMaterialButton } from "./components/RegisterPlantMaterialButton"
 import { View } from "react-native"
 import { Button } from "../../components/Button"
 import { Text } from "../../components/Text"
@@ -13,7 +12,6 @@ type Props = BottomTabScreenProps<BottomTabRouteList,"ListPlantMaterial">
 export const ListPlantMaterial= ({ navigation } : Props)=> {
   return <SafeAreaView className="w-full h-full bg-background">
     <ModalContainer>
-      <RegisterPlantMaterialButton/>
       <Modal id="register-plant-material-modal" transparent>
         <ModalBackground className="flex flex-col justify-end">
           <PlantMaterialForm onSubmit={() => modalStore.close("register-plant-material-modal")}/>
