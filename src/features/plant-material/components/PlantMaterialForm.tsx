@@ -12,10 +12,10 @@ const schema = z.object({
   quantity: z.number().nonnegative()
 })
 
-type PlantMaterialFormType = z.output<typeof schema>
+type PlantMaterialFormData = z.output<typeof schema>
 
 type PlantMaterialFormProps = {
-  onSubmit?:(data : PlantMaterialFormType) => unknown
+  onSubmit?:(data : PlantMaterialFormData) => unknown
 }
 export const PlantMaterialForm = ({ onSubmit } : PlantMaterialFormProps) => {
     
@@ -23,7 +23,7 @@ export const PlantMaterialForm = ({ onSubmit } : PlantMaterialFormProps) => {
    resolver:  zodResolver(schema)
   })
   
-  const submit = (data : PlantMaterialFormType) => {
+  const submit = (data : PlantMaterialFormData) => {
     data.name = data.name.trim()
 
     onSubmit?.(data)
