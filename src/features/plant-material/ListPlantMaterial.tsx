@@ -16,11 +16,11 @@ export const ListPlantMaterial= ({ navigation } : Props)=> {
       <RegisterPlantMaterialButton/>
       <Modal id="register-plant-material-modal" transparent>
         <ModalBackground className="flex flex-col justify-end">
-          <PlantMaterialForm onSubmit={() => modalStore.show("register-plant-material-modal")}/>
+          <PlantMaterialForm onSubmit={() => modalStore.close("register-plant-material-modal")}/>
         </ModalBackground>  
       </Modal>
       <View className="w-full absolute bottom-0 p-4 flex items-center justify-center">
-        <Button className="w-full" onPressOut={() => modalStore.close("register-plant-material-modal")}>
+        <Button className="w-full" onPressOut={() => modalStore.show("register-plant-material-modal")}>
           <Text className="text-white text-xl">Registrar</Text>
         </Button> 
       </View>
