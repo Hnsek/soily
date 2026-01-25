@@ -13,13 +13,14 @@ export const usePlantMaterial = () => {
 
     
   const create = (plantMaterial : CreatePlantMaterial) => {
+    console.warn(PlantMaterial.generate(plantMaterial))
     realm.write(() => {
       realm.create("PlantMaterial", PlantMaterial.generate(plantMaterial))
     })
   }
   
   return {
-    plantMaterials,
+    plantMaterials: plantMaterials.toJSON(),
     create
   }
 
