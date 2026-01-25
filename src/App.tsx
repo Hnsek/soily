@@ -8,6 +8,8 @@ import "../global.css"
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useEffect } from 'react';
 import Clarity from "@microsoft/react-native-clarity"
+import { RealmProvider } from '@realm/react';
+import { schema } from './database/schema';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -29,9 +31,11 @@ function App() {
 function AppContent() {
   return (
     <SafeAreaView style={styles.container}>
-      <GestureHandlerRootView>
-        <Router/>
-      </GestureHandlerRootView>
+      <RealmProvider schema={schema}>
+          <GestureHandlerRootView>
+            <Router/>
+          </GestureHandlerRootView>
+      </RealmProvider>
     </SafeAreaView>
   );
 }
