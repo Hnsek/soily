@@ -16,6 +16,11 @@ export const ListPlantMaterial= ({ navigation } : Props)=> {
           <PlantMaterialForm/>
         </ModalBackground>  
       </Modal>
+      <View className="w-full absolute bottom-0 p-4 flex items-center justify-center">
+        <Button className="w-full" onPressOut={() => modalStore.show("register-plant-material-modal")}>
+          <Text className="text-white text-xl">Registrar</Text>
+        </Button> 
+      </View>
     </ModalContainer>
   </SafeAreaView>
 }
