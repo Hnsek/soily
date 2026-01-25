@@ -6,7 +6,14 @@ export class PlantMaterial extends Realm.Object {
   quantity!: number;
   createdAt!:Date;
 
- 
+  static generate(data: {name:string, quantity: number}){
+    return {
+      _id: new Realm.BSON.ObjectId(),
+      createdAt: new Date(),
+      ...data
+    }
+  }
+
   static schema = {
     name: 'Task',
     primaryKey: '_id',
