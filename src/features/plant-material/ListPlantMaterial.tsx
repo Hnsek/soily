@@ -1,7 +1,7 @@
 import { SafeAreaView } from "react-native-safe-area-context"
 import { BottomTabRouteList } from "../../Router"
 import { BottomTabScreenProps } from "@react-navigation/bottom-tabs"
-import { Modal, ModalBackground, ModalContainer, modalStore } from "../../components/Modal"
+import { Modal, ModalBackground, modalStore } from "../../components/Modal"
 import { PlantMaterialForm } from "./components/PlantMaterialForm"
 import { View } from "react-native"
 import { Button } from "../../components/Button"
