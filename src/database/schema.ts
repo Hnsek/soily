@@ -1,9 +1,3 @@
-import { appSchema } from "@nozbe/watermelondb";
-import { flagTable } from "./tables/flag";
+import { PlantMaterial } from "./models/plant-material";
 
-export default appSchema({
-  version:1,
-  tables:[
-    flagTable
-  ]
-})
+export const schema = [PlantMaterial]
