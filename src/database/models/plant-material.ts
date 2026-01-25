@@ -3,8 +3,10 @@ import { Realm } from '@realm/react'
 export class PlantMaterial extends Realm.Object {
   _id!: Realm.BSON.ObjectId;
   name!: string;
-  quantity!: boolean;
+  quantity!: number;
+  createdAt!:Date;
 
+ 
   static schema = {
     name: 'Task',
     primaryKey: '_id',
@@ -12,6 +14,7 @@ export class PlantMaterial extends Realm.Object {
       _id: 'objectId',
       name: 'string',
       quantity: "double",
+      createdAt: "date"
     },
   };
 }
