@@ -15,7 +15,7 @@ export class PlantMaterial extends Realm.Object {
   }
 
   static schema = {
-    name: 'Task',
+    name: 'PlantMaterial',
     primaryKey: '_id',
     properties: {
       _id: 'objectId',
