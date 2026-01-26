@@ -3,7 +3,7 @@ import { ListPlanting } from './features/plantings/ListPlanting';
 import { CreatePlanting } from './features/plantings/CreatePlanting';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { ListPlantMaterial } from './features/plant-material/ListPlantMaterial';
+import { ListPlantMaterial } from './features/plant-materials/ListPlantMaterial';
 
 export type BottomTabRouteList = {
   ListPlantMaterial: undefined;
