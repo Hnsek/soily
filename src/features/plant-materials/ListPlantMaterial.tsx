@@ -18,14 +18,14 @@ export const ListPlantMaterial= ({ navigation } : Props)=> {
   
   return <SafeAreaView className="w-full h-full bg-background p-4 flex flex-col items-center">
     <FlatList
-      className="w-full gap-2"
+      className="w-full gap-2 flex-1"
       data={plantMaterials}
       keyExtractor={(item) => item._id.toHexString()}
       renderItem={({ item }) => {
         return <Card key={ item._id.toHexString()}{...item}>
           <CardContainer>
             <Text className="text-black font-bold">{item.name}</Text>
-            <Text className="text-black">{item.quantity}</Text>
+            <Text className="text-black">{item.quantity} KG</Text>
           </CardContainer>  
           <Button>
             <Text>Plantar</Text>
@@ -34,7 +34,7 @@ export const ListPlantMaterial= ({ navigation } : Props)=> {
       }}
       contentContainerStyle={{gap: 10}}
       />
-    <View className="w-full absolute bottom-0 flex items-center justify-center">
+    <View className="w-full flex items-center justify-center mt-5">
       <Button className="w-full" onPressOut={() => modalStore.show("register-plant-material-modal")}>
         <Text className="text-white text-xl">Registrar</Text>
       </Button> 
