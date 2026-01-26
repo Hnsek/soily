@@ -42,7 +42,7 @@ export const PlantMaterialForm = ({ onSubmit } : PlantMaterialFormProps) => {
         name="quantity"
         control={control}
         render={({field})=>{
-          return <NumericInput placeholder="Quantidade" {...field} onChangeValue={field.onChange} delimiter=","/>
+          return <NumericInput placeholder="Quantidade (KG)" {...field} onChangeValue={field.onChange} delimiter=","/>
         }}
         />
 
