@@ -41,10 +41,13 @@ export const ListPlantMaterial= ({ navigation } : Props)=> {
     </View>
     <Modal id="register-plant-material-modal" transparent>
       <ModalBackground className="flex flex-col justify-end">
-        <PlantMaterialForm onSubmit={(plantMaterial) => { 
-          create(plantMaterial)
-          modalStore.close("register-plant-material-modal")
-        }}/>
+        <PlantMaterialForm 
+          onSubmit={(plantMaterial) => { 
+            create(plantMaterial)
+            modalStore.close("register-plant-material-modal")
+          }}
+          onClose={() => modalStore.close("register-plant-material-modal")}
+          />
       </ModalBackground>  
     </Modal>
   </SafeAreaView>
