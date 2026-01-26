@@ -1,13 +1,13 @@
 import { ComponentProps } from "react"
-import { Text, View } from "react-native"
+import { View } from "react-native"
 import { twMerge } from "tailwind-merge"
 
 export type CardProps = ComponentProps<typeof View>
 export const Card = ({ children, className, ...props} : CardProps) => {
-  return <View className={twMerge("rounded-md border w-full h-10", className)} {...props}>{children}</View>
+  return <View className={twMerge("rounded-md border w-full", className)} {...props}>{children}</View>
 }
 
-type CardTextProps = ComponentProps<typeof Text>
-export const CardText = ({ children, ...props} : CardTextProps) => {
-  return <Text {...props}>{ children }</Text>
+export type CardContainerProps = ComponentProps<typeof View>
+export const CardContainer = ({ children, className, ...props} : CardContainerProps) => {
+  return <View className={twMerge("flex flex-row justify-around items-center py-4", className)} {...props}>{children}</View>
 }
