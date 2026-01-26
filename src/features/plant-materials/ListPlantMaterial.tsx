@@ -15,6 +15,11 @@ export const ListPlantMaterial= ({ navigation } : Props)=> {
   const { plantMaterials, create } = usePlantMaterial()
   
   return <SafeAreaView className="w-full h-full bg-background">
+    <View className="w-full absolute bottom-0 p-4 flex items-center justify-center">
+      <Button className="w-full" onPressOut={() => modalStore.show("register-plant-material-modal")}>
+        <Text className="text-white text-xl">Registrar</Text>
+      </Button> 
+    </View>
     <Modal id="register-plant-material-modal" transparent>
       <ModalBackground className="flex flex-col justify-end">
         <PlantMaterialForm onSubmit={(plantMaterial) => { 
@@ -23,10 +28,5 @@ export const ListPlantMaterial= ({ navigation } : Props)=> {
         }}/>
       </ModalBackground>  
     </Modal>
-    <View className="w-full absolute bottom-0 p-4 flex items-center justify-center">
-      <Button className="w-full" onPressOut={() => modalStore.show("register-plant-material-modal")}>
-        <Text className="text-white text-xl">Registrar</Text>
-      </Button> 
-    </View>
   </SafeAreaView>
 }
