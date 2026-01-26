@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { PlantMaterial } from "../../../database/models/plant-material"
 import { useQuery, useRealm } from "@realm/react"
 
@@ -20,7 +19,7 @@ export const usePlantMaterial = () => {
   }
   
   return {
-    plantMaterials: plantMaterials.toJSON(),
+    plantMaterials: plantMaterials.toJSON() as unknown as PlantMaterial[],
     create
   }
 
