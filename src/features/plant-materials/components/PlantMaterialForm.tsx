@@ -1,11 +1,11 @@
-import { View } from "react-native"
+import { Pressable, View } from "react-native"
 import { Button } from "../../../components/Button"
 import { z } from "zod"
 import { Controller, useForm } from "react-hook-form" 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { NumericInput, TextInput } from "../../../components/Input"
 import { Text } from "../../../components/Text"
-
+import { XMarkIcon } from "react-native-heroicons/mini"
 
 const schema = z.object({
   name: z.string().nonempty(),
@@ -15,9 +15,10 @@ const schema = z.object({
 type PlantMaterialFormData = z.output<typeof schema>
 
 type PlantMaterialFormProps = {
+  onClose?: () => unknown
   onSubmit?:(data : PlantMaterialFormData) => unknown
 }
-export const PlantMaterialForm = ({ onSubmit } : PlantMaterialFormProps) => {
+export const PlantMaterialForm = ({ onSubmit,  onClose } : PlantMaterialFormProps) => {
     
   const { control, handleSubmit } = useForm({
    resolver:  zodResolver(schema)
@@ -30,6 +31,11 @@ export const PlantMaterialForm = ({ onSubmit } : PlantMaterialFormProps) => {
   }
 
   return <View className="p-4 bg-background gap-4">
+      <View className="flex w-full flex-row justify-end items-center">
+        <Pressable onPressOut={() => onClose?.()}>
+          <XMarkIcon size={40}/>
+        </Pressable>
+      </View>
       <Controller
         name="name"
         control={control}
