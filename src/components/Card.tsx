@@ -4,7 +4,7 @@ import { twMerge } from "tailwind-merge"
 
 export type CardProps = ComponentProps<typeof View>
 export const Card = ({ children, className, ...props} : CardProps) => {
-  return <View className={twMerge("rounded-md border w-full", className)} {...props}>{children}</View>
+  return <View className={twMerge("rounded-md border border-gray-400 w-full gap-2 p-4", className)} {...props}>{children}</View>
 }
 
 export type CardContainerProps = ComponentProps<typeof View>
