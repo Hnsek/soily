@@ -1,4 +1,4 @@
-import { ComponentProps, createContext, ReactNode, useContext, useEffect, useState } from "react"
+import { ComponentProps, useEffect, useState } from "react"
 import { Modal as ModalRoot, View} from "react-native"
 import { twMerge } from "tailwind-merge"
 
@@ -12,7 +12,11 @@ export const Modal = ({children, ...props} : ModalProps) => {
       return
     }
 
-    modalStore.subscribe(props.id, {visible: visible, setVisible})
+    const unsubscribe = modalStore.subscribe(props.id, {visible: visible, setVisible})
+  
+    return () => { 
+      unsubscribe()
+    }
   }, [])
 
   return <ModalRoot visible={visible} {...props}>{children}</ModalRoot>
@@ -35,7 +39,7 @@ type ModalStore = {
   },
   show(id:string) : unknown,
   close(id:string) : unknown,
-  subscribe(id : string, listener:ModalListener):unknown
+  subscribe(id : string, listener:ModalListener):() => unknown
 }
 
 export const modalStore : ModalStore= {
@@ -47,7 +51,9 @@ export const modalStore : ModalStore= {
   close(id:string){
     this.listeners[id].setVisible(false)
   },
-  subscribe(id : string, listener: ModalListener){
+  subscribe(id : string, listener: ModalListener) : () => unknown{
     this.listeners[id] = listener
+    
+    return () => delete this.listeners[id]
   }
 }
