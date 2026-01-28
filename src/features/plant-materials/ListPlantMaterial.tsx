@@ -9,6 +9,8 @@ import { Text } from "../../components/Text"
 import { usePlantMaterial } from "./hooks/usePlantMaterial"
 import { FlatList } from "react-native-gesture-handler"
 import { Card, CardContainer} from "../../components/Card"
+import { PlantingForm } from "./components/PlantingForm"
+import { PlantMaterialList } from "./components/PlantMaterialList"
 
 type Props = BottomTabScreenProps<BottomTabRouteList,"ListPlantMaterial">
 
@@ -20,23 +22,7 @@ export const ListPlantMaterial= ({ navigation } : Props)=> {
     <View className="w-full py-6">
       <Text className="text-black text-2xl font-bold">Sementes/Mudas</Text>
     </View>
-    <FlatList
-      className="w-full gap-2 flex-1"
-      data={plantMaterials}
-      keyExtractor={(item) => item._id.toHexString()}
-      renderItem={({ item }) => {
-        return <Card key={ item._id.toHexString()}{...item}>
-          <CardContainer>
-            <Text className="text-black font-bold">{item.name}</Text>
-            <Text className="text-black">{item.quantity} KG</Text>
-          </CardContainer>  
-          <Button>
-            <Text>Plantar</Text>
-          </Button> 
-        </Card> 
-      }}
-      contentContainerStyle={{gap: 10}}
-      />
+    <PlantMaterialList plantMaterials={plantMaterials}/>
     <View className="w-full flex items-center justify-center pt-5">
       <Button className="w-full" onPressOut={() => modalStore.show("register-plant-material-modal")}>
         <Text className="text-white text-xl">Registrar</Text>
