@@ -5,7 +5,7 @@ import { twMerge } from "tailwind-merge"
 type ModalProps = ComponentProps<typeof ModalRoot>
 export const Modal = ({children, ...props} : ModalProps) => {
 
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(props.visible || false)
   
   useEffect(() => {
     if(!props.id){
@@ -18,6 +18,12 @@ export const Modal = ({children, ...props} : ModalProps) => {
       unsubscribe()
     }
   }, [])
+
+  useEffect(() => {
+    if(props.visible){
+      setVisible(props.visible)
+    }
+  }, [props.visible])
 
   return <ModalRoot visible={visible} {...props}>{children}</ModalRoot>
 }
