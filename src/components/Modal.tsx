@@ -12,7 +12,7 @@ export const Modal = ({children, ...props} : ModalProps) => {
       return
     }
 
-    const unsubscribe = modalStore.subscribe(props.id, {visible: visible, setVisible})
+    const unsubscribe = modalStore.subscribe(props.id, {setVisible})
   
     return () => { 
       unsubscribe()
@@ -28,7 +28,6 @@ export const ModalBackground = ({ children, className, ...props } : ModalBackgro
 }
 
 type ModalListener = {
-      visible:boolean,
       setVisible: React.Dispatch<React.SetStateAction<boolean>>
   }
 
