@@ -8,18 +8,27 @@ import { Button } from "../../components/Button"
 import { Text } from "../../components/Text"
 import { usePlantMaterial } from "./hooks/usePlantMaterial"
 import { PlantMaterialList } from "./components/PlantMaterialList"
+import { PlantMaterialCard } from "./components/PlantMaterialCard"
+import { useState } from "react"
+import { PlantMaterial } from "../../database/models/plant-material"
+import { CreatePlantingModal } from "./components/CreatePlantingModal"
 
 type Props = BottomTabScreenProps<BottomTabRouteList,"ListPlantMaterial">
 
 export const ListPlantMaterial= ({ navigation } : Props)=> {
   
   const { plantMaterials, create } = usePlantMaterial()
-  
+  const [selectedPlantingMaterial, setSelectedPlantingMaterial] = useState<PlantMaterial>()
+
   return <SafeAreaView className="w-full h-full bg-background p-4 flex flex-col items-center">
     <View className="w-full py-6">
       <Text className="text-black text-2xl font-bold">Sementes/Mudas</Text>
     </View>
-    <PlantMaterialList plantMaterials={plantMaterials}/>
+    <PlantMaterialList 
+      plantMaterials={plantMaterials}
+      renderItem={({item: plantMaterial}) => <PlantMaterialCard plantMaterial={plantMaterial} onCreatePlanting={() => setSelectedPlantingMaterial(plantMaterial)}/>}
+      />
+    <CreatePlantingModal plantMaterial={selectedPlantingMaterial!}/> 
     <View className="w-full flex items-center justify-center pt-5">
       <Button className="w-full" onPress={() => modalStore.show("register-plant-material-modal")}>
         <Text className="text-white text-xl">Registrar</Text>
