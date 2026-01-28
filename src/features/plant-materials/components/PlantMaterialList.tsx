@@ -20,6 +20,8 @@ export const PlantMaterialList = ({ plantMaterials } : PlantMaterialListProps) =
   const hidePlantingForm = () => {
     setPlantMaterialSelected(undefined)
   }
+  
+  
 
   return <View className="flex-1 w-full">
     <FlatList
@@ -27,15 +29,7 @@ export const PlantMaterialList = ({ plantMaterials } : PlantMaterialListProps) =
       data={plantMaterials}
       keyExtractor={(item) => item._id.toHexString()}
       renderItem={({ item }) => {
-        return <Card key={ item._id.toHexString()}{...item}>
-          <CardContainer>
-            <Text className="text-black font-bold">{item.name}</Text>
-            <Text className="text-black">{item.quantity} KG</Text>
-          </CardContainer>  
-          <Button onPress={() => showPlantingForm(item)}>
-            <Text>Plantar</Text>
-          </Button> 
-        </Card> 
+        return <PlantMaterialCard  plantMaterial={item} onCreatePlanting={showPlantingForm}/>
       }}
       contentContainerStyle={{gap: 10}}
       />
@@ -48,4 +42,20 @@ export const PlantMaterialList = ({ plantMaterials } : PlantMaterialListProps) =
       </ModalBackground>
     </Modal>
   </View>
+}
+
+type PlantMaterialCardProps = {
+  plantMaterial: PlantMaterial,
+  onCreatePlanting: ( plantMaterial : PlantMaterial) => unknown
+}
+const PlantMaterialCard = ({plantMaterial, onCreatePlanting} : PlantMaterialCardProps) => {
+  return <Card key={ plantMaterial._id.toHexString()}>
+          <CardContainer>
+            <Text className="text-black font-bold">{plantMaterial.name}</Text>
+            <Text className="text-black">{plantMaterial.quantity} KG</Text>
+          </CardContainer>  
+          <Button onPress={() => onCreatePlanting(plantMaterial)}>
+            <Text>Plantar</Text>
+          </Button> 
+        </Card> 
 }
