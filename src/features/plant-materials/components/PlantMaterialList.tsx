@@ -1,11 +1,9 @@
 import { FlatList, View } from "react-native"
-import { Card, CardContainer } from "../../../components/Card"
-import { Text } from "../../../components/Text"
-import { Button } from "../../../components/Button"
 import { PlantMaterial } from "../../../database/models/plant-material"
-import { Modal, ModalBackground, modalStore } from "../../../components/Modal"
+import { Modal, ModalBackground } from "../../../components/Modal"
 import { PlantingForm } from "./PlantingForm"
 import { useState } from "react"
+import { PlantMaterialCard } from "./PlantMaterialCard"
 
 type PlantMaterialListProps = {
   plantMaterials: PlantMaterial[]
@@ -20,8 +18,6 @@ export const PlantMaterialList = ({ plantMaterials } : PlantMaterialListProps) =
   const hidePlantingForm = () => {
     setPlantMaterialSelected(undefined)
   }
-  
-  
 
   return <View className="flex-1 w-full">
     <FlatList
@@ -44,18 +40,3 @@ export const PlantMaterialList = ({ plantMaterials } : PlantMaterialListProps) =
   </View>
 }
 
-type PlantMaterialCardProps = {
-  plantMaterial: PlantMaterial,
-  onCreatePlanting: ( plantMaterial : PlantMaterial) => unknown
-}
-const PlantMaterialCard = ({plantMaterial, onCreatePlanting} : PlantMaterialCardProps) => {
-  return <Card key={ plantMaterial._id.toHexString()}>
-          <CardContainer>
-            <Text className="text-black font-bold">{plantMaterial.name}</Text>
-            <Text className="text-black">{plantMaterial.quantity} KG</Text>
-          </CardContainer>  
-          <Button onPress={() => onCreatePlanting(plantMaterial)}>
-            <Text>Plantar</Text>
-          </Button> 
-        </Card> 
-}
