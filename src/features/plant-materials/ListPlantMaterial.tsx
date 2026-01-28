@@ -7,9 +7,6 @@ import { View } from "react-native"
 import { Button } from "../../components/Button"
 import { Text } from "../../components/Text"
 import { usePlantMaterial } from "./hooks/usePlantMaterial"
-import { FlatList } from "react-native-gesture-handler"
-import { Card, CardContainer} from "../../components/Card"
-import { PlantingForm } from "./components/PlantingForm"
 import { PlantMaterialList } from "./components/PlantMaterialList"
 
 type Props = BottomTabScreenProps<BottomTabRouteList,"ListPlantMaterial">
@@ -24,7 +21,7 @@ export const ListPlantMaterial= ({ navigation } : Props)=> {
     </View>
     <PlantMaterialList plantMaterials={plantMaterials}/>
     <View className="w-full flex items-center justify-center pt-5">
-      <Button className="w-full" onPressOut={() => modalStore.show("register-plant-material-modal")}>
+      <Button className="w-full" onPress={() => modalStore.show("register-plant-material-modal")}>
         <Text className="text-white text-xl">Registrar</Text>
       </Button> 
     </View>
