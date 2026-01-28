@@ -42,6 +42,7 @@ export const PlantMaterialList = ({ plantMaterials } : PlantMaterialListProps) =
     <Modal visible={!!plantMaterialSelected} transparent>
       <ModalBackground className="flex flex-col justify-end">
         <PlantingForm
+          title={plantMaterialSelected?.name}
           onClose={hidePlantingForm}
         />
       </ModalBackground>

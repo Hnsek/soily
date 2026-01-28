@@ -15,10 +15,11 @@ const schema = z.object({
 type PlantingFormData = z.output<typeof schema>
 
 type PlantingFormProps = {
+  title?:string
   onClose?: () => unknown
   onSubmit?:(data : PlantingFormData) => unknown
 }
-export const PlantingForm = ({ onSubmit,  onClose } : PlantingFormProps) => {
+export const PlantingForm = ({ onSubmit,  onClose, title } : PlantingFormProps) => {
     
   const { control, handleSubmit } = useForm({
    resolver:  zodResolver(schema)
@@ -29,11 +30,13 @@ export const PlantingForm = ({ onSubmit,  onClose } : PlantingFormProps) => {
   }
 
   return <View className="p-4 bg-background gap-4">
-      <View className="flex w-full flex-row justify-end items-center">
+      <View className="flex w-full flex-row justify-between items-center">
+        <Text className="text-black font-bold">{title}</Text>
         <Pressable onPressOut={() => onClose?.()}>
           <XMarkIcon size={40}/>
         </Pressable>
       </View>
+      <Text className="text-black">Quantos KG vão ser plantados?</Text>
       <Controller
         name="quantity"
         control={control}
@@ -43,7 +46,7 @@ export const PlantingForm = ({ onSubmit,  onClose } : PlantingFormProps) => {
         />
 
       <Button onPressOut={handleSubmit(submit)}>
-        <Text>Registrar</Text>
+        <Text>Plantar</Text>
       </Button>
     </View>
 }
