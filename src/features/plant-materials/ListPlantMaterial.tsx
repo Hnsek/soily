@@ -17,6 +17,9 @@ export const ListPlantMaterial= ({ navigation } : Props)=> {
   const { plantMaterials, create } = usePlantMaterial()
   
   return <SafeAreaView className="w-full h-full bg-background p-4 flex flex-col items-center">
+    <View className="w-full py-6">
+      <Text className="text-black text-2xl font-bold">Sementes/Mudas</Text>
+    </View>
     <FlatList
       className="w-full gap-2 flex-1"
       data={plantMaterials}
@@ -34,7 +37,7 @@ export const ListPlantMaterial= ({ navigation } : Props)=> {
       }}
       contentContainerStyle={{gap: 10}}
       />
-    <View className="w-full flex items-center justify-center mt-5">
+    <View className="w-full flex items-center justify-center pt-5">
       <Button className="w-full" onPressOut={() => modalStore.show("register-plant-material-modal")}>
         <Text className="text-white text-xl">Registrar</Text>
       </Button> 
