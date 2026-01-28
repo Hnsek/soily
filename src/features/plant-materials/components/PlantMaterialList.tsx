@@ -1,42 +1,19 @@
-import { FlatList, View } from "react-native"
+import { FlatList, ListRenderItem, View } from "react-native"
 import { PlantMaterial } from "../../../database/models/plant-material"
-import { Modal, ModalBackground } from "../../../components/Modal"
-import { PlantingForm } from "./PlantingForm"
-import { useState } from "react"
-import { PlantMaterialCard } from "./PlantMaterialCard"
 
 type PlantMaterialListProps = {
   plantMaterials: PlantMaterial[]
+  renderItem: ListRenderItem<PlantMaterial>
 }
-export const PlantMaterialList = ({ plantMaterials } : PlantMaterialListProps) => {
-  const [plantMaterialSelected, setPlantMaterialSelected] = useState<PlantMaterial>()
-  
-  const showPlantingForm = (plantMaterial : PlantMaterial) => {
-    setPlantMaterialSelected(plantMaterial)
-  }
-
-  const hidePlantingForm = () => {
-    setPlantMaterialSelected(undefined)
-  }
-
+export const PlantMaterialList = ({ plantMaterials, renderItem } : PlantMaterialListProps) => {
   return <View className="flex-1 w-full">
     <FlatList
       className="w-full gap-2 flex-1"
       data={plantMaterials}
       keyExtractor={(item) => item._id.toHexString()}
-      renderItem={({ item }) => {
-        return <PlantMaterialCard  plantMaterial={item} onCreatePlanting={showPlantingForm}/>
-      }}
+      renderItem={renderItem}
       contentContainerStyle={{gap: 10}}
       />
-    <Modal visible={!!plantMaterialSelected} transparent>
-      <ModalBackground className="flex flex-col justify-end">
-        <PlantingForm
-          title={plantMaterialSelected?.name}
-          onClose={hidePlantingForm}
-        />
-      </ModalBackground>
-    </Modal>
   </View>
 }
 
