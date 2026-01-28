@@ -32,7 +32,7 @@ export const PlantMaterialList = ({ plantMaterials } : PlantMaterialListProps) =
             <Text className="text-black font-bold">{item.name}</Text>
             <Text className="text-black">{item.quantity} KG</Text>
           </CardContainer>  
-          <Button onPressOut={() => showPlantingForm(item)}>
+          <Button onPress={() => showPlantingForm(item)}>
             <Text>Plantar</Text>
           </Button> 
         </Card> 
