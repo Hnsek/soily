@@ -6,7 +6,7 @@ import { PlantingMaterialForm } from "./components/PlantingMaterialForm"
 import { View } from "react-native"
 import { Button } from "../../components/Button"
 import { Text } from "../../components/Text"
-import { usePlantMaterial } from "./hooks/usePlantMaterial"
+import { usePlantingMaterial } from "./hooks/usePlantingMaterial"
 import { PlantingMaterialList } from "./components/PlantingMaterialList"
 import { PlantingMaterialCard } from "./components/PlantingMaterialCard"
 import { useState } from "react"
@@ -17,7 +17,7 @@ type Props = BottomTabScreenProps<BottomTabRouteList,"ListPlantMaterial">
 
 export const ListPlantMaterial= ({ navigation } : Props)=> {
   
-  const { plantMaterials, create } = usePlantMaterial()
+  const { plantMaterials, create } = usePlantingMaterial()
   const [selectedPlantingMaterial, setSelectedPlantingMaterial] = useState<PlantingMaterial>()
 
   return <SafeAreaView className="w-full h-full bg-background p-4 flex flex-col items-center">

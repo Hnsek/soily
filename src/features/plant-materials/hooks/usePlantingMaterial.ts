@@ -6,7 +6,7 @@ type CreatePlantMaterial = {
   quantity: number;
 }
 
-export const usePlantMaterial = () => {
+export const usePlantingMaterial = () => {
   const realm = useRealm()
   const plantMaterials = useQuery(PlantingMaterial)
 
