@@ -1,4 +1,4 @@
-import { FlatList, ListRenderItem, View } from "react-native"
+import { FlatList, ListRenderItem, View, Text } from "react-native"
 import { PlantingMaterial } from "../../../database/models/planting-material"
 
 type PlantingMaterialListProps = {
@@ -13,7 +13,15 @@ export const PlantingMaterialList = ({ plantMaterials, renderItem } : PlantingMa
       keyExtractor={(item) => item._id.toHexString()}
       renderItem={renderItem}
       contentContainerStyle={{gap: 10}}
+      ListEmptyComponent={() => <ListEmptyComponent/>}
+      contentContainerClassName="h-full" 
       />
+  </View>
+}
+
+const ListEmptyComponent = () => {
+  return <View className="w-full flex-1 flex flex-col justify-center items-center">
+    <Text className="text-2xl">Nenhuma semente ou muda criada.</Text>
   </View>
 }
 
