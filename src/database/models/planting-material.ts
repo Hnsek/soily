@@ -5,6 +5,8 @@ export class PlantingMaterial extends Realm.Object {
   name!: string;
   quantity!: number;
   createdAt!:Date;
+  
+  static schemaName = "PlantingMaterial"
 
   static generate(data: {name:string, quantity: number}){
     return {
@@ -15,7 +17,7 @@ export class PlantingMaterial extends Realm.Object {
   }
 
   static schema = {
-    name: 'PlantingMaterial',
+    name: this.schemaName,
     primaryKey: '_id',
     properties: {
       _id: 'objectId',

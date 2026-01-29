@@ -14,7 +14,7 @@ export const usePlantMaterial = () => {
   const create = (plantMaterial : CreatePlantMaterial) => {
     console.warn(PlantingMaterial.generate(plantMaterial))
     realm.write(() => {
-      realm.create("PlantMaterial", PlantingMaterial.generate(plantMaterial))
+      realm.create(PlantingMaterial.schemaName, PlantingMaterial.generate(plantMaterial))
     })
   }
   
