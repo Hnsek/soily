@@ -8,7 +8,7 @@ import { Button } from "../../components/Button"
 import { Text } from "../../components/Text"
 import { usePlantMaterial } from "./hooks/usePlantMaterial"
 import { PlantMaterialList } from "./components/PlantingMaterialList"
-import { PlantMaterialCard } from "./components/PlantingMaterialCard"
+import { PlantingMaterialCard } from "./components/PlantingMaterialCard"
 import { useState } from "react"
 import { PlantingMaterial } from "../../database/models/planting-material"
 import { CreatePlantingModal } from "./components/CreatePlantingModal"
@@ -26,7 +26,7 @@ export const ListPlantMaterial= ({ navigation } : Props)=> {
     </View>
     <PlantMaterialList 
       plantMaterials={plantMaterials}
-      renderItem={({item: plantMaterial}) => <PlantMaterialCard plantMaterial={plantMaterial} onCreatePlanting={() => setSelectedPlantingMaterial(plantMaterial)}/>}
+      renderItem={({item: plantMaterial}) => <PlantingMaterialCard plantMaterial={plantMaterial} onCreatePlanting={() => setSelectedPlantingMaterial(plantMaterial)}/>}
       />
     <CreatePlantingModal plantMaterial={selectedPlantingMaterial!}/> 
     <View className="w-full flex items-center justify-center pt-5">

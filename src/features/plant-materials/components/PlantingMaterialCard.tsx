@@ -3,11 +3,11 @@ import { Card, CardContainer } from "../../../components/Card"
 import { Text } from "../../../components/Text"
 import { PlantingMaterial } from "../../../database/models/planting-material"
 
-export type PlantMaterialCardProps = {
+export type PlantingMaterialCardProps = {
   plantMaterial: PlantingMaterial,
   onCreatePlanting: ( plantMaterial : PlantingMaterial) => unknown
 }
-export const PlantMaterialCard = ({plantMaterial, onCreatePlanting} : PlantMaterialCardProps) => {
+export const PlantingMaterialCard = ({plantMaterial, onCreatePlanting} : PlantingMaterialCardProps) => {
   return <Card key={ plantMaterial._id.toHexString()}>
           <CardContainer>
             <Text className="text-black font-bold">{plantMaterial.name}</Text>
