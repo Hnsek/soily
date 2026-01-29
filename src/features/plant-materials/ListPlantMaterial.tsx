@@ -2,7 +2,7 @@ import { SafeAreaView } from "react-native-safe-area-context"
 import { BottomTabRouteList } from "../../Router"
 import { BottomTabScreenProps } from "@react-navigation/bottom-tabs"
 import { Modal, ModalBackground, modalStore } from "../../components/Modal"
-import { PlantMaterialForm } from "./components/PlantingMaterialForm"
+import { PlantingMaterialForm } from "./components/PlantingMaterialForm"
 import { View } from "react-native"
 import { Button } from "../../components/Button"
 import { Text } from "../../components/Text"
@@ -36,7 +36,7 @@ export const ListPlantMaterial= ({ navigation } : Props)=> {
     </View>
     <Modal id="register-plant-material-modal" transparent>
       <ModalBackground className="flex flex-col justify-end">
-        <PlantMaterialForm 
+        <PlantingMaterialForm 
           onSubmit={(plantMaterial) => { 
             create(plantMaterial)
             modalStore.close("register-plant-material-modal")

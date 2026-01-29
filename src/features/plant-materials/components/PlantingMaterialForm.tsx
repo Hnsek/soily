@@ -12,19 +12,19 @@ const schema = z.object({
   quantity: z.number().nonnegative()
 })
 
-type PlantMaterialFormData = z.output<typeof schema>
+type PlantingMaterialFormData = z.output<typeof schema>
 
-type PlantMaterialFormProps = {
+type PlantingMaterialFormProps = {
   onClose?: () => unknown
-  onSubmit?:(data : PlantMaterialFormData) => unknown
+  onSubmit?:(data : PlantingMaterialFormData) => unknown
 }
-export const PlantMaterialForm = ({ onSubmit,  onClose } : PlantMaterialFormProps) => {
+export const PlantingMaterialForm = ({ onSubmit,  onClose } : PlantingMaterialFormProps) => {
     
   const { control, handleSubmit } = useForm({
    resolver:  zodResolver(schema)
   })
   
-  const submit = (data : PlantMaterialFormData) => {
+  const submit = (data : PlantingMaterialFormData) => {
     data.name = data.name.trim()
 
     onSubmit?.(data)
