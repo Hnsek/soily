@@ -1,7 +1,7 @@
 import { Button } from "../../../components/Button"
 import { Card, CardContainer } from "../../../components/Card"
 import { Text } from "../../../components/Text"
-import { PlantingMaterial } from "../../../database/models/plant-material"
+import { PlantingMaterial } from "../../../database/models/planting-material"
 
 export type PlantMaterialCardProps = {
   plantMaterial: PlantingMaterial,

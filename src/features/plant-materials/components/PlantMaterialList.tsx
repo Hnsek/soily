@@ -1,5 +1,5 @@
 import { FlatList, ListRenderItem, View } from "react-native"
-import { PlantingMaterial } from "../../../database/models/plant-material"
+import { PlantingMaterial } from "../../../database/models/planting-material"
 
 type PlantMaterialListProps = {
   plantMaterials: PlantingMaterial[]

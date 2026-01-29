@@ -1,3 +1,3 @@
-import { PlantingMaterial } from "./models/plant-material";
+import { PlantingMaterial } from "./models/planting-material";
 
 export const schema = [PlantingMaterial]

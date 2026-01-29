@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { Modal, ModalBackground } from "../../../components/Modal"
-import { PlantingMaterial } from "../../../database/models/plant-material"
+import { PlantingMaterial } from "../../../database/models/planting-material"
 import { PlantingForm } from "./PlantingForm"
 
 type CreatePlantingModalProps = {

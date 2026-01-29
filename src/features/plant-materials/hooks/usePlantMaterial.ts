@@ -1,4 +1,4 @@
-import { PlantingMaterial } from "../../../database/models/plant-material"
+import { PlantingMaterial } from "../../../database/models/planting-material"
 import { useQuery, useRealm } from "@realm/react"
 
 type CreatePlantMaterial = {

@@ -10,7 +10,7 @@ import { usePlantMaterial } from "./hooks/usePlantMaterial"
 import { PlantMaterialList } from "./components/PlantMaterialList"
 import { PlantMaterialCard } from "./components/PlantMaterialCard"
 import { useState } from "react"
-import { PlantingMaterial } from "../../database/models/plant-material"
+import { PlantingMaterial } from "../../database/models/planting-material"
 import { CreatePlantingModal } from "./components/CreatePlantingModal"
 
 type Props = BottomTabScreenProps<BottomTabRouteList,"ListPlantMaterial">
