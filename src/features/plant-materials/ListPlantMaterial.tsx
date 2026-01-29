@@ -7,7 +7,7 @@ import { View } from "react-native"
 import { Button } from "../../components/Button"
 import { Text } from "../../components/Text"
 import { usePlantMaterial } from "./hooks/usePlantMaterial"
-import { PlantMaterialList } from "./components/PlantingMaterialList"
+import { PlantingMaterialList } from "./components/PlantingMaterialList"
 import { PlantingMaterialCard } from "./components/PlantingMaterialCard"
 import { useState } from "react"
 import { PlantingMaterial } from "../../database/models/planting-material"
@@ -24,7 +24,7 @@ export const ListPlantMaterial= ({ navigation } : Props)=> {
     <View className="w-full py-6">
       <Text className="text-black text-2xl font-bold">Sementes/Mudas</Text>
     </View>
-    <PlantMaterialList 
+    <PlantingMaterialList 
       plantMaterials={plantMaterials}
       renderItem={({item: plantMaterial}) => <PlantingMaterialCard plantMaterial={plantMaterial} onCreatePlanting={() => setSelectedPlantingMaterial(plantMaterial)}/>}
       />
