@@ -10,7 +10,7 @@ import { usePlantMaterial } from "./hooks/usePlantMaterial"
 import { PlantMaterialList } from "./components/PlantMaterialList"
 import { PlantMaterialCard } from "./components/PlantMaterialCard"
 import { useState } from "react"
-import { PlantMaterial } from "../../database/models/plant-material"
+import { PlantingMaterial } from "../../database/models/plant-material"
 import { CreatePlantingModal } from "./components/CreatePlantingModal"
 
 type Props = BottomTabScreenProps<BottomTabRouteList,"ListPlantMaterial">
@@ -18,7 +18,7 @@ type Props = BottomTabScreenProps<BottomTabRouteList,"ListPlantMaterial">
 export const ListPlantMaterial= ({ navigation } : Props)=> {
   
   const { plantMaterials, create } = usePlantMaterial()
-  const [selectedPlantingMaterial, setSelectedPlantingMaterial] = useState<PlantMaterial>()
+  const [selectedPlantingMaterial, setSelectedPlantingMaterial] = useState<PlantingMaterial>()
 
   return <SafeAreaView className="w-full h-full bg-background p-4 flex flex-col items-center">
     <View className="w-full py-6">

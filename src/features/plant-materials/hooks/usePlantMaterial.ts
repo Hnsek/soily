@@ -1,4 +1,4 @@
-import { PlantMaterial } from "../../../database/models/plant-material"
+import { PlantingMaterial } from "../../../database/models/plant-material"
 import { useQuery, useRealm } from "@realm/react"
 
 type CreatePlantMaterial = {
@@ -8,18 +8,18 @@ type CreatePlantMaterial = {
 
 export const usePlantMaterial = () => {
   const realm = useRealm()
-  const plantMaterials = useQuery(PlantMaterial)
+  const plantMaterials = useQuery(PlantingMaterial)
 
     
   const create = (plantMaterial : CreatePlantMaterial) => {
-    console.warn(PlantMaterial.generate(plantMaterial))
+    console.warn(PlantingMaterial.generate(plantMaterial))
     realm.write(() => {
-      realm.create("PlantMaterial", PlantMaterial.generate(plantMaterial))
+      realm.create("PlantMaterial", PlantingMaterial.generate(plantMaterial))
     })
   }
   
   return {
-    plantMaterials: plantMaterials.toJSON() as unknown as PlantMaterial[],
+    plantMaterials: plantMaterials.toJSON() as unknown as PlantingMaterial[],
     create
   }
 

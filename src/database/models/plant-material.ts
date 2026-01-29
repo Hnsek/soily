@@ -1,6 +1,6 @@
 import { Realm } from '@realm/react'
 
-export class PlantMaterial extends Realm.Object {
+export class PlantingMaterial extends Realm.Object {
   _id!: Realm.BSON.ObjectId;
   name!: string;
   quantity!: number;

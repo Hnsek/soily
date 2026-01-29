@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
 import { Modal, ModalBackground } from "../../../components/Modal"
-import { PlantMaterial } from "../../../database/models/plant-material"
+import { PlantingMaterial } from "../../../database/models/plant-material"
 import { PlantingForm } from "./PlantingForm"
 
 type CreatePlantingModalProps = {
-  plantMaterial?: PlantMaterial
+  plantMaterial?: PlantingMaterial
 }
 export const CreatePlantingModal = ({ plantMaterial } : CreatePlantingModalProps) => {
   const [visible, setVisible] = useState(!!plantMaterial)
