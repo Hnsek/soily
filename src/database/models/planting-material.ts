@@ -1,5 +1,5 @@
 import { Realm } from '@realm/react'
-import { CreatePlantingMaterial } from '../dtos/planting-materials';
+import { CreatePlantingMaterial } from '../../dtos/planting-materials';
 
 export class PlantingMaterial extends Realm.Object {
   _id!: Realm.BSON.UUID;
