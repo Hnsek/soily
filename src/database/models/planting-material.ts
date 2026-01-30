@@ -1,18 +1,19 @@
 import { Realm } from '@realm/react'
+import { CreatePlantingMaterial } from '../dtos/planting-materials';
 
 export class PlantingMaterial extends Realm.Object {
   _id!: Realm.BSON.UUID;
   name!: string;
-  quantity!: number;
+  initialQuantity!: number;
   createdAt!:Date;
   
   static schemaName = "PlantingMaterial"
 
-  static generate(data: {name:string, quantity: number}){
+  static generate(plantingMaterial: CreatePlantingMaterial){
     return {
       _id: new Realm.BSON.UUID(),
       createdAt: new Date(),
-      ...data
+      ...plantingMaterial
     }
   }
 
@@ -22,7 +23,7 @@ export class PlantingMaterial extends Realm.Object {
     properties: {
       _id: 'uuid',
       name: 'string',
-      quantity: "double",
+      initialQuantity: "double",
       createdAt: "date"
     },
   };
