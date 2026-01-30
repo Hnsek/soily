@@ -26,7 +26,7 @@ export class Planting extends Realm.Object {
       name: 'string',
       quantity: "double",
       createdAt: "date",
-      plantingMaterial:"PlantingMaterial"
+      plantingMaterial:PlantingMaterial.schemaName
     },
   };
 }
