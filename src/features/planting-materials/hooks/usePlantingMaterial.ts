@@ -16,10 +16,23 @@ export const usePlantingMaterial = () => {
       realm.create(PlantingMaterial.schemaName, PlantingMaterial.generate(plantMaterial))
     })
   }
+
+  const update = (id : Realm.BSON.ObjectId, plantMaterial : Partial<PlantingMaterial>) => {
+    realm.write(() => {
+      const found = realm.objectForPrimaryKey(PlantingMaterial.schemaName, id)
+    
+      if(found){
+        Object.entries(plantMaterial).forEach(([key,value]) => {
+          found[key] = value
+        })
+      }
+    })
+  }
   
   return {
     plantMaterials: plantMaterials.toJSON() as unknown as PlantingMaterial[],
-    create
+    create,
+    update
   }
 
 }
