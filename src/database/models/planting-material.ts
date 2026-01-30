@@ -5,6 +5,7 @@ export class PlantingMaterial extends Realm.Object {
   _id!: Realm.BSON.UUID;
   name!: string;
   initialQuantity!: number;
+  currentQuantity!:number;
   createdAt!:Date;
   
   static schemaName = "PlantingMaterial"
@@ -24,6 +25,7 @@ export class PlantingMaterial extends Realm.Object {
       _id: 'uuid',
       name: 'string',
       initialQuantity: "double",
+      currentQuantity: "double",
       createdAt: "date"
     },
   };
