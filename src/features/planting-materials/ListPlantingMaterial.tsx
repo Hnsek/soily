@@ -12,6 +12,7 @@ import { PlantingMaterialCard } from "./components/PlantingMaterialCard"
 import { useState } from "react"
 import { PlantingMaterial } from "../../database/models/planting-material"
 import { CreatePlantingModal } from "./components/CreatePlantingModal"
+import { PlantingForm, PlantingFormData } from "./components/PlantingForm"
 
 type Props = BottomTabScreenProps<BottomTabRouteList,"ListPlantMaterial">
 
@@ -24,6 +25,10 @@ export const ListPlantingMaterial= ({ navigation } : Props)=> {
     create({...plantingMaterial, currentQuantity: plantingMaterial.initialQuantity})
     modalStore.close("register-planting-material-modal")
   }
+  
+  const onPlantingSubmit = (planting : PlantingFormData,) => {
+      
+  }
 
   return <SafeAreaView className="w-full h-full bg-background p-4 flex flex-col items-center">
     <View className="w-full py-6">
@@ -33,7 +38,14 @@ export const ListPlantingMaterial= ({ navigation } : Props)=> {
       plantingMaterials={plantingMaterials}
       renderItem={({item: plantingMaterial}) => <PlantingMaterialCard plantingMaterial={plantingMaterial} onCreatePlanting={() => setSelectedPlantingMaterial(plantingMaterial)}/>}
       />
-    <CreatePlantingModal plantingMaterial={selectedPlantingMaterial!}/> 
+    <Modal visible={!!selectedPlantingMaterial} transparent>
+      <ModalBackground className="flex flex-col justify-end">
+        <PlantingForm 
+          title={selectedPlantingMaterial?.name} 
+          onClose={() => setSelectedPlantingMaterial(undefined)} 
+          onSubmit={onPlantingSubmit}/>
+      </ModalBackground>
+    </Modal>
     <View className="w-full flex items-center justify-center pt-5">
       <Button className="w-full" onPress={() => modalStore.show("register-planting-material-modal")}>
         <Text className="text-white text-xl">Registrar</Text>
