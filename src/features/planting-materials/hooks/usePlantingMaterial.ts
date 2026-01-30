@@ -17,7 +17,7 @@ export const usePlantingMaterial = () => {
     })
   }
 
-  const update = (id : Realm.BSON.ObjectId, plantMaterial : Partial<PlantingMaterial>) => {
+  const update = (id : Realm.BSON.UUID, plantMaterial : Partial<PlantingMaterial>) => {
     realm.write(() => {
       const found = realm.objectForPrimaryKey(PlantingMaterial.schemaName, id)
     

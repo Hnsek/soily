@@ -1,7 +1,7 @@
 import { Realm } from '@realm/react'
 
 export class PlantingMaterial extends Realm.Object {
-  _id!: Realm.BSON.ObjectId;
+  _id!: Realm.BSON.UUID;
   name!: string;
   quantity!: number;
   createdAt!:Date;
@@ -20,7 +20,7 @@ export class PlantingMaterial extends Realm.Object {
     name: this.schemaName,
     primaryKey: '_id',
     properties: {
-      _id: 'objectId',
+      _id: 'uuid',
       name: 'string',
       quantity: "double",
       createdAt: "date"
