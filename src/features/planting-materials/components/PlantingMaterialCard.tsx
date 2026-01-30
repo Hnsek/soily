@@ -11,7 +11,7 @@ export const PlantingMaterialCard = ({plantingMaterial, onCreatePlanting} : Plan
   return <Card key={ plantingMaterial._id.toHexString()}>
           <CardContainer>
             <Text className="text-black font-bold">{plantingMaterial.name}</Text>
-            <Text className="text-black">{plantingMaterial.quantity} KG</Text>
+            <Text className="text-black">{plantingMaterial.initialQuantity} KG</Text>
           </CardContainer>  
           <Button onPress={() => onCreatePlanting(plantingMaterial)}>
             <Text>Plantar</Text>

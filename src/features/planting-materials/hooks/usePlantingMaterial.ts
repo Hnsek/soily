@@ -1,17 +1,14 @@
+import { CreatePlantingMaterial } from "../../../database/dtos/planting-materials"
 import { PlantingMaterial } from "../../../database/models/planting-material"
-import { useQuery, useRealm } from "@realm/react"
+import { useQuery, useRealm, Realm } from "@realm/react"
 
-type CreatePlantMaterial = {
-  name: string;
-  quantity: number;
-}
 
 export const usePlantingMaterial = () => {
   const realm = useRealm()
   const plantingMaterials = useQuery(PlantingMaterial)
 
     
-  const create = (plantingMaterial : CreatePlantMaterial) => {
+  const create = (plantingMaterial : CreatePlantingMaterial) => {
     realm.write(() => {
       realm.create(PlantingMaterial.schemaName, PlantingMaterial.generate(plantingMaterial))
     })

@@ -9,7 +9,7 @@ import { XMarkIcon } from "react-native-heroicons/mini"
 
 const schema = z.object({
   name: z.string().nonempty(),
-  quantity: z.number().nonnegative()
+  initialQuantity: z.number().nonnegative()
 })
 
 type PlantingMaterialFormData = z.output<typeof schema>
@@ -45,7 +45,7 @@ export const PlantingMaterialForm = ({ onSubmit,  onClose } : PlantingMaterialFo
         />
       
       <Controller
-        name="quantity"
+        name="initialQuantity"
         control={control}
         render={({field})=>{
           return <NumericInput placeholder="Quantidade (KG)" {...field} onChangeValue={field.onChange} delimiter=","/>
