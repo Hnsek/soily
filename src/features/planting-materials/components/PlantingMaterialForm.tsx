@@ -12,7 +12,7 @@ const schema = z.object({
   initialQuantity: z.number().nonnegative()
 })
 
-type PlantingMaterialFormData = z.output<typeof schema>
+export type PlantingMaterialFormData = z.output<typeof schema>
 
 type PlantingMaterialFormProps = {
   onClose?: () => unknown

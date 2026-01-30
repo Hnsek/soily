@@ -12,7 +12,7 @@ const schema = z.object({
   quantity: z.number().nonnegative()
 })
 
-type PlantingFormData = z.output<typeof schema>
+export type PlantingFormData = z.output<typeof schema>
 
 type PlantingFormProps = {
   title?:string
