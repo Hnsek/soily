@@ -2,7 +2,7 @@ import { SafeAreaView } from "react-native-safe-area-context"
 import { BottomTabRouteList } from "../../Router"
 import { BottomTabScreenProps } from "@react-navigation/bottom-tabs"
 import { Modal, ModalBackground, modalStore } from "../../components/Modal"
-import { PlantingMaterialForm } from "./components/PlantingMaterialForm"
+import { PlantingMaterialForm, PlantingMaterialFormData } from "./components/PlantingMaterialForm"
 import { View } from "react-native"
 import { Button } from "../../components/Button"
 import { Text } from "../../components/Text"
@@ -19,6 +19,11 @@ export const ListPlantingMaterial= ({ navigation } : Props)=> {
   
   const { plantingMaterials, create } = usePlantingMaterial()
   const [selectedPlantingMaterial, setSelectedPlantingMaterial] = useState<PlantingMaterial>()
+  
+  const onSubmit = (plantingMaterial : PlantingMaterialFormData) => {
+    create({...plantingMaterial, currentQuantity: plantingMaterial.initialQuantity})
+    modalStore.close("register-planting-material-modal")
+  }
 
   return <SafeAreaView className="w-full h-full bg-background p-4 flex flex-col items-center">
     <View className="w-full py-6">
@@ -37,10 +42,7 @@ export const ListPlantingMaterial= ({ navigation } : Props)=> {
     <Modal id="register-planting-material-modal" transparent>
       <ModalBackground className="flex flex-col justify-end">
         <PlantingMaterialForm 
-          onSubmit={(plantingMaterial) => { 
-            create(plantingMaterial)
-            modalStore.close("register-planting-material-modal")
-          }}
+          onSubmit={onSubmit}
           onClose={() => modalStore.close("register-planting-material-modal")}
           />
       </ModalBackground>  
