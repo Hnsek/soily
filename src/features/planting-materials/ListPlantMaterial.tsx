@@ -30,18 +30,18 @@ export const ListPlantMaterial= ({ navigation } : Props)=> {
       />
     <CreatePlantingModal plantMaterial={selectedPlantingMaterial!}/> 
     <View className="w-full flex items-center justify-center pt-5">
-      <Button className="w-full" onPress={() => modalStore.show("register-plant-material-modal")}>
+      <Button className="w-full" onPress={() => modalStore.show("register-planting-material-modal")}>
         <Text className="text-white text-xl">Registrar</Text>
       </Button> 
     </View>
-    <Modal id="register-plant-material-modal" transparent>
+    <Modal id="register-planting-material-modal" transparent>
       <ModalBackground className="flex flex-col justify-end">
         <PlantingMaterialForm 
           onSubmit={(plantMaterial) => { 
             create(plantMaterial)
-            modalStore.close("register-plant-material-modal")
+            modalStore.close("register-planting-material-modal")
           }}
-          onClose={() => modalStore.close("register-plant-material-modal")}
+          onClose={() => modalStore.close("register-planting-material-modal")}
           />
       </ModalBackground>  
     </Modal>
