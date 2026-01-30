@@ -8,21 +8,21 @@ type CreatePlantMaterial = {
 
 export const usePlantingMaterial = () => {
   const realm = useRealm()
-  const plantMaterials = useQuery(PlantingMaterial)
+  const plantingMaterials = useQuery(PlantingMaterial)
 
     
-  const create = (plantMaterial : CreatePlantMaterial) => {
+  const create = (plantingMaterial : CreatePlantMaterial) => {
     realm.write(() => {
-      realm.create(PlantingMaterial.schemaName, PlantingMaterial.generate(plantMaterial))
+      realm.create(PlantingMaterial.schemaName, PlantingMaterial.generate(plantingMaterial))
     })
   }
 
-  const update = (id : Realm.BSON.UUID, plantMaterial : Partial<PlantingMaterial>) => {
+  const update = (id : Realm.BSON.UUID, plantingMaterial : Partial<PlantingMaterial>) => {
     realm.write(() => {
       const found = realm.objectForPrimaryKey(PlantingMaterial.schemaName, id)
     
       if(found){
-        Object.entries(plantMaterial).forEach(([key,value]) => {
+        Object.entries(plantingMaterial).forEach(([key,value]) => {
           found[key] = value
         })
       }
@@ -30,7 +30,7 @@ export const usePlantingMaterial = () => {
   }
   
   return {
-    plantMaterials: plantMaterials.toJSON() as unknown as PlantingMaterial[],
+    plantingMaterials: plantingMaterials.toJSON() as unknown as PlantingMaterial[],
     create,
     update
   }

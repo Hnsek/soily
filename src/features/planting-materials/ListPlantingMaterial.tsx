@@ -15,9 +15,9 @@ import { CreatePlantingModal } from "./components/CreatePlantingModal"
 
 type Props = BottomTabScreenProps<BottomTabRouteList,"ListPlantMaterial">
 
-export const ListPlantMaterial= ({ navigation } : Props)=> {
+export const ListPlantingMaterial= ({ navigation } : Props)=> {
   
-  const { plantMaterials, create } = usePlantingMaterial()
+  const { plantingMaterials, create } = usePlantingMaterial()
   const [selectedPlantingMaterial, setSelectedPlantingMaterial] = useState<PlantingMaterial>()
 
   return <SafeAreaView className="w-full h-full bg-background p-4 flex flex-col items-center">
@@ -25,10 +25,10 @@ export const ListPlantMaterial= ({ navigation } : Props)=> {
       <Text className="text-black text-2xl font-bold">Sementes/Mudas</Text>
     </View>
     <PlantingMaterialList 
-      plantMaterials={plantMaterials}
-      renderItem={({item: plantMaterial}) => <PlantingMaterialCard plantMaterial={plantMaterial} onCreatePlanting={() => setSelectedPlantingMaterial(plantMaterial)}/>}
+      plantingMaterials={plantingMaterials}
+      renderItem={({item: plantingMaterial}) => <PlantingMaterialCard plantingMaterial={plantingMaterial} onCreatePlanting={() => setSelectedPlantingMaterial(plantingMaterial)}/>}
       />
-    <CreatePlantingModal plantMaterial={selectedPlantingMaterial!}/> 
+    <CreatePlantingModal plantingMaterial={selectedPlantingMaterial!}/> 
     <View className="w-full flex items-center justify-center pt-5">
       <Button className="w-full" onPress={() => modalStore.show("register-planting-material-modal")}>
         <Text className="text-white text-xl">Registrar</Text>
@@ -37,8 +37,8 @@ export const ListPlantMaterial= ({ navigation } : Props)=> {
     <Modal id="register-planting-material-modal" transparent>
       <ModalBackground className="flex flex-col justify-end">
         <PlantingMaterialForm 
-          onSubmit={(plantMaterial) => { 
-            create(plantMaterial)
+          onSubmit={(plantingMaterial) => { 
+            create(plantingMaterial)
             modalStore.close("register-planting-material-modal")
           }}
           onClose={() => modalStore.close("register-planting-material-modal")}

@@ -4,19 +4,19 @@ import { PlantingMaterial } from "../../../database/models/planting-material"
 import { PlantingForm } from "./PlantingForm"
 
 type CreatePlantingModalProps = {
-  plantMaterial?: PlantingMaterial
+  plantingMaterial?: PlantingMaterial
 }
-export const CreatePlantingModal = ({ plantMaterial } : CreatePlantingModalProps) => {
-  const [visible, setVisible] = useState(!!plantMaterial)
+export const CreatePlantingModal = ({ plantingMaterial } : CreatePlantingModalProps) => {
+  const [visible, setVisible] = useState(!!plantingMaterial)
 
   useEffect(() => {
-    setVisible(!!plantMaterial)
-  }, [plantMaterial])
+    setVisible(!!plantingMaterial)
+  }, [plantingMaterial])
 
   return <Modal visible={visible} transparent>
       <ModalBackground className="flex flex-col justify-end">
         <PlantingForm
-          title={plantMaterial?.name}
+          title={plantingMaterial?.name}
           onClose={() => setVisible(false)}
         />
       </ModalBackground>

@@ -4,16 +4,16 @@ import { Text } from "../../../components/Text"
 import { PlantingMaterial } from "../../../database/models/planting-material"
 
 export type PlantingMaterialCardProps = {
-  plantMaterial: PlantingMaterial,
-  onCreatePlanting: ( plantMaterial : PlantingMaterial) => unknown
+  plantingMaterial: PlantingMaterial,
+  onCreatePlanting: ( plantingMaterial : PlantingMaterial) => unknown
 }
-export const PlantingMaterialCard = ({plantMaterial, onCreatePlanting} : PlantingMaterialCardProps) => {
-  return <Card key={ plantMaterial._id.toHexString()}>
+export const PlantingMaterialCard = ({plantingMaterial, onCreatePlanting} : PlantingMaterialCardProps) => {
+  return <Card key={ plantingMaterial._id.toHexString()}>
           <CardContainer>
-            <Text className="text-black font-bold">{plantMaterial.name}</Text>
-            <Text className="text-black">{plantMaterial.quantity} KG</Text>
+            <Text className="text-black font-bold">{plantingMaterial.name}</Text>
+            <Text className="text-black">{plantingMaterial.quantity} KG</Text>
           </CardContainer>  
-          <Button onPress={() => onCreatePlanting(plantMaterial)}>
+          <Button onPress={() => onCreatePlanting(plantingMaterial)}>
             <Text>Plantar</Text>
           </Button> 
         </Card> 
