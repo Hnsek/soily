@@ -10,7 +10,7 @@ export class PlantingMaterial extends Realm.Object {
 
   static generate(data: {name:string, quantity: number}){
     return {
-      _id: new Realm.BSON.ObjectId(),
+      _id: new Realm.BSON.UUID(),
       createdAt: new Date(),
       ...data
     }
