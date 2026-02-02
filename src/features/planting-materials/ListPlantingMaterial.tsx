@@ -11,7 +11,7 @@ import { PlantingMaterialList } from "./components/PlantingMaterialList"
 import { PlantingMaterialCard } from "./components/PlantingMaterialCard"
 import { useState } from "react"
 import { PlantingMaterial } from "../../database/models/planting-material"
-import { PlantingForm, PlantingFormData } from "./components/PlantingForm"
+import { PlantingForm } from "./components/PlantingForm"
 import { CreatePlanting } from "../../dtos/planting"
 import { usePersistPlantingMaterial } from "./hooks/usePersistPlantingMaterial"
 
@@ -19,7 +19,6 @@ type Props = BottomTabScreenProps<BottomTabRouteList,"ListPlantMaterial">
 
 export const ListPlantingMaterial= ({ navigation } : Props)=> {
   
-  const { plantingMaterials } = usePlantingMaterial()
   const { createPlantingMaterial } = usePersistPlantingMaterial()
 
   const [selectedPlantingMaterial, setSelectedPlantingMaterial] = useState<PlantingMaterial>()
@@ -38,7 +37,6 @@ export const ListPlantingMaterial= ({ navigation } : Props)=> {
       <Text className="text-black text-2xl font-bold">Sementes/Mudas</Text>
     </View>
     <PlantingMaterialList 
-      plantingMaterials={plantingMaterials}
       renderItem={({item: plantingMaterial}) => <PlantingMaterialCard plantingMaterial={plantingMaterial} onCreatePlanting={() => setSelectedPlantingMaterial(plantingMaterial)}/>}
       />
     <Modal visible={!!selectedPlantingMaterial} transparent>
