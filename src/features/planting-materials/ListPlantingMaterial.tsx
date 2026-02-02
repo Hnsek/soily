@@ -13,6 +13,7 @@ import { CreatePlanting } from "../../dtos/planting"
 import { usePersistPlantingMaterial } from "./hooks/usePersistPlantingMaterial"
 import { PlantingMaterialTitle } from "./components/PlantingMaterialTitle"
 import { PlantingForm } from "../plantings/components/PlantingForm"
+import { CreatePlantingModal } from "../plantings/components/CreatePlantingModal"
 
 type Props = BottomTabScreenProps<BottomTabRouteList,"ListPlantMaterial">
 
@@ -20,29 +21,15 @@ export const ListPlantingMaterial= ({ navigation } : Props)=> {
   
   const { createPlantingMaterial } = usePersistPlantingMaterial()
 
-  const [selectedPlantingMaterial, setSelectedPlantingMaterial] = useState<PlantingMaterial>()
-  
   const onSubmit = (plantingMaterial : PlantingMaterialFormData) => {
     createPlantingMaterial({...plantingMaterial, currentQuantity: plantingMaterial.initialQuantity})
     modalStore.close("register-planting-material-modal")
-  }
-  
-  const onPlantingSubmit = (planting : CreatePlanting) => {
-    console.warn("planting: ", planting)      
   }
 
   return <SafeAreaView className="w-full h-full bg-background p-4 flex flex-col items-center">
     <PlantingMaterialTitle>Sementes/Mudas</PlantingMaterialTitle>
     <PlantingMaterialList />
-    <Modal visible={!!selectedPlantingMaterial} transparent>
-      <ModalBackground className="flex flex-col justify-end">
-        { selectedPlantingMaterial && <PlantingForm 
-          title={selectedPlantingMaterial.name} 
-          onClose={() => setSelectedPlantingMaterial(undefined)} 
-          onSubmit={(planting) => onPlantingSubmit({...planting, plantingMaterial: selectedPlantingMaterial})}/>
-        } 
-      </ModalBackground>
-    </Modal>
+    <CreatePlantingModal/>
     <View className="w-full flex items-center justify-center pt-5">
       <Button className="w-full" onPress={() => modalStore.show("register-planting-material-modal")}>
         <Text className="text-white text-xl">Registrar</Text>
