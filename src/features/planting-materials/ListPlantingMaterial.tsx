@@ -6,15 +6,13 @@ import { PlantingMaterialForm, PlantingMaterialFormData } from "./components/Pla
 import { View } from "react-native"
 import { Button } from "../../components/Button"
 import { Text } from "../../components/Text"
-import { usePlantingMaterial } from "./hooks/usePlantingMaterial"
 import { PlantingMaterialList } from "./components/PlantingMaterialList"
-import { PlantingMaterialCard } from "./components/PlantingMaterialCard"
 import { useState } from "react"
 import { PlantingMaterial } from "../../database/models/planting-material"
-import { PlantingForm } from "./components/PlantingForm"
 import { CreatePlanting } from "../../dtos/planting"
 import { usePersistPlantingMaterial } from "./hooks/usePersistPlantingMaterial"
 import { PlantingMaterialTitle } from "./components/PlantingMaterialTitle"
+import { PlantingForm } from "../plantings/components/PlantingForm"
 
 type Props = BottomTabScreenProps<BottomTabRouteList,"ListPlantMaterial">
 
