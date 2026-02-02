@@ -13,16 +13,19 @@ import { useState } from "react"
 import { PlantingMaterial } from "../../database/models/planting-material"
 import { PlantingForm, PlantingFormData } from "./components/PlantingForm"
 import { CreatePlanting } from "../../dtos/planting"
+import { usePersistPlantingMaterial } from "./hooks/usePersistPlantingMaterial"
 
 type Props = BottomTabScreenProps<BottomTabRouteList,"ListPlantMaterial">
 
 export const ListPlantingMaterial= ({ navigation } : Props)=> {
   
-  const { plantingMaterials, create } = usePlantingMaterial()
+  const { plantingMaterials } = usePlantingMaterial()
+  const { createPlantingMaterial } = usePersistPlantingMaterial()
+
   const [selectedPlantingMaterial, setSelectedPlantingMaterial] = useState<PlantingMaterial>()
   
   const onSubmit = (plantingMaterial : PlantingMaterialFormData) => {
-    create({...plantingMaterial, currentQuantity: plantingMaterial.initialQuantity})
+    createPlantingMaterial({...plantingMaterial, currentQuantity: plantingMaterial.initialQuantity})
     modalStore.close("register-planting-material-modal")
   }
   
