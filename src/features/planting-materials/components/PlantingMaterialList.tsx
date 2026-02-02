@@ -1,19 +1,21 @@
 import { FlatList, ListRenderItem, View, Text } from "react-native"
 import { PlantingMaterial } from "../../../database/models/planting-material"
 import { usePlantingMaterial } from "../hooks/usePlantingMaterial"
+import { PlantingMaterialCard } from "./PlantingMaterialCard"
+import { usePlantingMaterialAction } from "../stores/usePlantingMaterialAction"
 
-type PlantingMaterialListProps = {
-  renderItem: ListRenderItem<PlantingMaterial>
-}
-export const PlantingMaterialList = ({ renderItem } : PlantingMaterialListProps) => {
+export const PlantingMaterialList = () => {
   const { plantingMaterials } = usePlantingMaterial()
+  const { setAction } = usePlantingMaterialAction()
 
   return <View className="flex-1 w-full">
     <FlatList
       className="w-full gap-2 flex-1"
       data={plantingMaterials}
       keyExtractor={(item) => item._id.toHexString()}
-      renderItem={renderItem}
+      renderItem={({item: plantingMaterial}) => <PlantingMaterialCard 
+          plantingMaterial={plantingMaterial} 
+          onCreatePlanting={() => { setAction(plantingMaterial, "planting") }}/>}
       ListEmptyComponent={() => <ListEmptyComponent/>}
       contentContainerClassName="h-full gap-3" 
       />
