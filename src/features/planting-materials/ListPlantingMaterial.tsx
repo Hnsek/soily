@@ -14,6 +14,7 @@ import { PlantingMaterial } from "../../database/models/planting-material"
 import { PlantingForm } from "./components/PlantingForm"
 import { CreatePlanting } from "../../dtos/planting"
 import { usePersistPlantingMaterial } from "./hooks/usePersistPlantingMaterial"
+import { PlantingMaterialTitle } from "./components/PlantingMaterialTitle"
 
 type Props = BottomTabScreenProps<BottomTabRouteList,"ListPlantMaterial">
 
@@ -33,12 +34,8 @@ export const ListPlantingMaterial= ({ navigation } : Props)=> {
   }
 
   return <SafeAreaView className="w-full h-full bg-background p-4 flex flex-col items-center">
-    <View className="w-full py-6">
-      <Text className="text-black text-2xl font-bold">Sementes/Mudas</Text>
-    </View>
-    <PlantingMaterialList 
-      renderItem={({item: plantingMaterial}) => <PlantingMaterialCard plantingMaterial={plantingMaterial} onCreatePlanting={() => setSelectedPlantingMaterial(plantingMaterial)}/>}
-      />
+    <PlantingMaterialTitle>Sementes/Mudas</PlantingMaterialTitle>
+    <PlantingMaterialList />
     <Modal visible={!!selectedPlantingMaterial} transparent>
       <ModalBackground className="flex flex-col justify-end">
         { selectedPlantingMaterial && <PlantingForm 
