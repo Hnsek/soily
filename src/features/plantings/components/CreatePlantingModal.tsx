@@ -24,7 +24,7 @@ export const CreatePlantingModal = () => {
             }
 
             createPlanting({...planting, plantingMaterial})
-            updatePlantingMaterial(plantingMaterial._id, plantingMaterial.plant(planting.quantity))
+            updatePlantingMaterial(plantingMaterial._id, { currentQuantity: plantingMaterial.plant(planting.quantity)})
             resetAction()
           }}/>
         } 
