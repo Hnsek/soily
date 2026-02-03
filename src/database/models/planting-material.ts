@@ -17,9 +17,8 @@ export class PlantingMaterial extends Realm.Object {
     }
   }
 
-  plant(quantity: number) : PlantingMaterial{
-    this.currentQuantity -= quantity;
-    return this;
+  plant(quantity: number) : number{
+    return this.currentQuantity - quantity;
   }
 
   static schemaName = "PlantingMaterial"
