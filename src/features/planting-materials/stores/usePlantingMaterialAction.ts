@@ -4,7 +4,7 @@ import { PlantingMaterial } from "../../../database/models/planting-material"
 type Action = "planting" 
 
 type UsePlantingMaterial = {
-  plantingMaterial: PlantingMaterial | null,
+  plantingMaterial?: PlantingMaterial,
   action: Action | null
   setAction: (plantingMaterial: PlantingMaterial, action : Action) => unknown
   resetAction: () => unknown
@@ -12,8 +12,8 @@ type UsePlantingMaterial = {
 
 
 export const usePlantingMaterialAction = create<UsePlantingMaterial>((set) => ({
-  plantingMaterial: null,
+  plantingMaterial: undefined,
   action: null,
   setAction:(plantingMaterial, action) => set((state) => ({ plantingMaterial, action})),
-  resetAction: () => set(() => ({ plantingMaterial: null, action: null}))
+  resetAction: () => set(() => ({ plantingMaterial: undefined, action: null}))
 }))
