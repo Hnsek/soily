@@ -5,9 +5,8 @@ import { CreatePlantingMaterial } from "../../../dtos/planting-materials"
 
 export const usePlantingMaterial = () => {
   const plantingMaterials = useQuery(PlantingMaterial)
-    
   return {
-    plantingMaterials: plantingMaterials.toJSON() as unknown as PlantingMaterial[],
+    plantingMaterials: plantingMaterials as unknown as PlantingMaterial[],
   }
 
 }
