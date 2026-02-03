@@ -23,7 +23,6 @@ export class Planting extends Realm.Object {
     primaryKey: '_id',
     properties: {
       _id: 'uuid',
-      name: 'string',
       quantity: "double",
       createdAt: "date",
       plantingMaterial:PlantingMaterial.schemaName
