@@ -1,6 +1,5 @@
 import { PlantingMaterial } from "../../../database/models/planting-material"
-import { useQuery, useRealm, Realm } from "@realm/react"
-import { CreatePlantingMaterial } from "../../../dtos/planting-materials"
+import { useQuery } from "@realm/react"
 
 
 export const usePlantingMaterial = () => {
