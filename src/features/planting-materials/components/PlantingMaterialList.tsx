@@ -1,5 +1,4 @@
-import { FlatList, ListRenderItem, View, Text } from "react-native"
-import { PlantingMaterial } from "../../../database/models/planting-material"
+import { FlatList, View, Text } from "react-native"
 import { usePlantingMaterial } from "../hooks/usePlantingMaterial"
 import { PlantingMaterialCard } from "./PlantingMaterialCard"
 import { usePlantingMaterialAction } from "../stores/usePlantingMaterialAction"
