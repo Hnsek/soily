@@ -17,11 +17,7 @@ export const CreateHarvestModal = () => {
           title={planting?.plantingMaterial.name} 
           onClose={() => resetAction()}
           onSubmit={(harvest) => {
-            if(!planting){
-              return
-            }
-
-            createHarvest({...harvest, planting})
+            createHarvest({...harvest, planting: planting!})
             resetAction()
           }}/>
         } 
