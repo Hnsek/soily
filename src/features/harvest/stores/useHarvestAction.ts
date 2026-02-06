@@ -6,7 +6,7 @@ type Action = "harvest"
 type UseHarvestAction = {
   planting?: Planting,
   action: Action | null
-  setAction: (plantingMaterial: Planting, action : Action) => unknown
+  setAction: (planting: Planting, action : Action) => unknown
   resetAction: () => unknown
 }
 
@@ -14,6 +14,6 @@ type UseHarvestAction = {
 export const useHarvestAction = create<UseHarvestAction>((set) => ({
   planting: undefined,
   action: null,
-  setAction:(plantingMaterial, action) => set((state) => ({ planting: plantingMaterial, action})),
+  setAction:(planting, action) => set((state) => ({ planting, action})),
   resetAction: () => set(() => ({ planting: undefined, action: null}))
 }))
