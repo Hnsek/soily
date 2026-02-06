@@ -1,18 +1,20 @@
 import { FlatList, View, Text } from "react-native"
 import { PlantingCard } from "./PlantingCard"
 import { usePlantings } from "../hooks/usePlantings"
+import { useHarvestAction } from "../../harvest/stores/useHarvestAction"
 
 export const PlantingList = () => {
   const { plantings } = usePlantings()
+  const { setAction } = useHarvestAction()
 
   return <View className="flex-1 w-full">
     <FlatList
       className="w-full gap-2 flex-1"
       data={plantings}
       keyExtractor={(item) => item._id.toHexString()}
-      renderItem={({item: plantingMaterial}) => <PlantingCard 
-          planting={plantingMaterial} 
-          onHarvest={() => {  }}/>}
+      renderItem={({item: planting}) => <PlantingCard 
+          planting={planting} 
+          onHarvest={() => { setAction(planting,"harvest") }}/>}
       ListEmptyComponent={() => <ListEmptyComponent/>}
       contentContainerClassName="h-full gap-3" 
       />
