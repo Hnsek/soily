@@ -17,6 +17,10 @@ export class Planting extends Realm.Object {
       ...plantingMaterial
     }
   }
+  
+  harvest(quantity:number){
+    return this.quantity - quantity
+  }
 
   static schema = {
     name: this.schemaName,
