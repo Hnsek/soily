@@ -77,7 +77,7 @@ O projeto utiliza as seguintes tecnologias:
     yarn android
     # ou
     yarn ios
-    ```
+  ```
 ---
 
 ## 📋 Estrutura do Projeto
