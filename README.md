@@ -54,7 +54,7 @@ O projeto utiliza as seguintes tecnologias:
 
 1. Clone o repositório:
     ```bash
-    git clone https://github.com/seu-usuario/react-native-farm-manager.git
+    git clone https://github.com/Hnsek/soily.git
     ```
 2. Acesse o diretório:
     ```bash
