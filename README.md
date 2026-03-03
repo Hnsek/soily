@@ -1,98 +1,101 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# 🌱 Soily
 
-# Getting Started
+> Aplicativo móvel para gestão de sementes/mudas e plantações — organizado, intuitivo e eficiente.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## 🔍 Sobre o Projeto
 
-## Step 1: Start Metro
+O **Soily** é um aplicativo desenvolvido em **React Native** com foco em produção agrícola e gerenciamento de recursos no campo. Ele auxilia produtores e gestores agrícolas a controlar seus materiais de plantio (sementes/mudas) e acompanhar plantações de forma organizada e inteligente.
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+Ele oferece telas para 📦 **gestão de sementes/mudas** (*planting-materials*) e 🌾 **gestão de plantações** (*plantings*), permitindo visualizar, criar, editar e remover itens conforme necessidade.
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+---
 
-```sh
-# Using npm
-npm start
+## 🚀 Funcionalidades
 
-# OR using Yarn
-yarn start
-```
+### 📍 Gestão de Sementes/Mudas (Planting Materials)
+✔️ Listar todos os materiais disponíveis  
+✔️ Cadastrar novo material  
+✔️ Editar informações de sementes/mudas  
+✔️ Remover materiais  
+✔️ Pesquisa e filtro de materiais  
 
-## Step 2: Build and run your app
+### 🌿 Gestão de Plantações (Plantings)
+✔️ Exibir plantações ativas  
+✔️ Registrar novas plantações  
+✔️ Atualizar status e datas de plantio/colheita  
+✔️ Remover plantações  
+✔️ Visão detalhada de cada plantio  
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+---
 
-### Android
+## 📱 Screenshots / Demonstração
 
-```sh
-# Using npm
-npm run android
+> *Adicione imagens ou GIFs aqui para mostrar telas do app. Imagens ajudam bastante quem acessa o repositório!* :contentReference[oaicite:1]{index=1}
 
-# OR using Yarn
-yarn android
-```
+![Tela de sementes e mudas](https://github.com/user-attachments/assets/0835ccda-c7e3-4579-a478-d7565bad4691)
+![Tela de plantações](https://github.com/user-attachments/assets/d529af57-3032-40b5-bde5-923489d3de55)
 
-### iOS
+---
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+## 🛠️ Tecnologias Utilizadas
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+O projeto utiliza as seguintes tecnologias:
 
-```sh
-bundle install
-```
+- **React Native** — framework principal
+- **React Native CLI**
+- **TypeScript**
+- **React Navigation** — navegação entre telas
+- **WatermelonDB** — persistência de dados
+- **Tailwind / CSS** — estilos
 
-Then, and every time you update your native dependencies, run:
+> Liste as bibliotecas específicas que o projeto usa (ex.: Axios, Redux/Context, Formik, etc).
 
-```sh
-bundle exec pod install
-```
+---
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+## 📥 Instalação
 
-```sh
-# Using npm
-npm run ios
+1. Clone o repositório:
+    ```bash
+    git clone https://github.com/seu-usuario/react-native-farm-manager.git
+    ```
+2. Acesse o diretório:
+    ```bash
+    cd soily
+    ```
+3. Instale as dependências:
+    ```bash
+    npm install
+    # ou
+    yarn
+    ```
+4. Inicie o servidor:
+    ```bash
+    npm start
+    # ou
+    yarn start
+    ```
+5. Abra no seu dispositivo/emulador (Android/iOS).
+  ```bash
+    yarn android
+    # ou
+    yarn ios
+    ```
+---
 
-# OR using Yarn
-yarn ios
-```
+## 📋 Estrutura do Projeto
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+├── src/
+│ ├── components/
+│ ├── database/
+│ ├── dtos/ 
+│ ├── features/
+│ ├── App.tsx
+│ └── Router.tsx
+├── package.json
+└── README.md
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+## 💡 Contato
 
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
-# soily
+Se você tiver dúvidas, sugestões ou quiser colaborar:
+📧 henrique2001sousa@gmail.com 
+🌐 www.linkedin.com/in/henriquesousaleandro
