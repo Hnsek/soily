@@ -30,10 +30,9 @@ Ele oferece telas para 📦 **gestão de sementes/mudas** (*planting-materials*)
 
 ## 📱 Screenshots / Demonstração
 
-> *Adicione imagens ou GIFs aqui para mostrar telas do app. Imagens ajudam bastante quem acessa o repositório!* :contentReference[oaicite:1]{index=1}
-
-![Tela de sementes e mudas](https://github.com/user-attachments/assets/0835ccda-c7e3-4579-a478-d7565bad4691)
-![Tela de plantações](https://github.com/user-attachments/assets/d529af57-3032-40b5-bde5-923489d3de55)
+| Tela de sementes e mudas | Tela de plantações |
+| -------------- | ---------------- |
+| ![Tela de sementes e mudas](https://github.com/user-attachments/assets/0835ccda-c7e3-4579-a478-d7565bad4691) | ![Tela de plantações](https://github.com/user-attachments/assets/d529af57-3032-40b5-bde5-923489d3de55) |
 
 ---
 
