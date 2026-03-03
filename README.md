@@ -73,11 +73,11 @@ O projeto utiliza as seguintes tecnologias:
     yarn start
     ```
 5. Abra no seu dispositivo/emulador (Android/iOS).
-  ```bash
+    ```bash
     yarn android
     # ou
     yarn ios
-  ```
+    ```
 ---
 
 ## 📋 Estrutura do Projeto
