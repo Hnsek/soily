@@ -43,6 +43,7 @@ O projeto utiliza as seguintes tecnologias:
 - **React Native** — framework principal
 - **React Native CLI**
 - **TypeScript**
+- **Zustand** - gerenciamento de estados globais
 - **React Navigation** — navegação entre telas
 - **WatermelonDB** — persistência de dados
 - **Tailwind / CSS** — estilos
