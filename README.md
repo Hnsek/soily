@@ -81,7 +81,7 @@ O projeto utiliza as seguintes tecnologias:
 ---
 
 ## 📋 Estrutura do Projeto
-
+```
 ├── src/
 │ ├── components/
 │ ├── database/
@@ -91,6 +91,7 @@ O projeto utiliza as seguintes tecnologias:
 │ └── Router.tsx
 ├── package.json
 └── README.md
+```
 
 ## 💡 Contato
 
