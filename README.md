@@ -47,8 +47,6 @@ O projeto utiliza as seguintes tecnologias:
 - **WatermelonDB** — persistência de dados
 - **Tailwind / CSS** — estilos
 
-> Liste as bibliotecas específicas que o projeto usa (ex.: Axios, Redux/Context, Formik, etc).
-
 ---
 
 ## 📥 Instalação
